@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Quiz
 //
-//  Created by Patrick Moraitis on 2/1/16.
+//  Created by Patrick Moraitis on 2/21/16.
 //  Copyright © 2016 Patrick Moraitis. All rights reserved.
 //
 
@@ -11,10 +11,9 @@ import UIKit
 class ViewController: UIViewController {
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         questionLabel.text = questions[currentQuestionIndex]
     }
-    
+
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet var answerLabel: UILabel!
     
@@ -44,7 +43,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showAnswer(sender: AnyObject) {
-       
+        
         let answer: String = answers[currentQuestionIndex]
         answerLabel.text = answer
     }

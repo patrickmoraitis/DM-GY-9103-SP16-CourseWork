@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CD8252A41C6051C5005C3CFF"
+               BlueprintIdentifier = "CDFBFAD21C7A7F110084E96C"
                BuildableName = "Quiz.app"
                BlueprintName = "Quiz"
                ReferencedContainer = "container:Quiz.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CD8252A41C6051C5005C3CFF"
+            BlueprintIdentifier = "CDFBFAD21C7A7F110084E96C"
             BuildableName = "Quiz.app"
             BlueprintName = "Quiz"
             ReferencedContainer = "container:Quiz.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CD8252A41C6051C5005C3CFF"
+            BlueprintIdentifier = "CDFBFAD21C7A7F110084E96C"
             BuildableName = "Quiz.app"
             BlueprintName = "Quiz"
             ReferencedContainer = "container:Quiz.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CD8252A41C6051C5005C3CFF"
+            BlueprintIdentifier = "CDFBFAD21C7A7F110084E96C"
             BuildableName = "Quiz.app"
             BlueprintName = "Quiz"
             ReferencedContainer = "container:Quiz.xcodeproj">
