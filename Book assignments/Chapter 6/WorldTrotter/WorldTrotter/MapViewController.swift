@@ -34,9 +34,13 @@ class MapViewController: UIViewController {
         
         let topConst = segControl.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor, constant: 8)
         
+        
         let margins = view.layoutMarginsGuide
         let leadConst = segControl.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor)
         let trailConst = segControl.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor)
+        
+        print(topLayoutGuide.bottomAnchor)
+
         
         topConst.active = true
         leadConst.active = true

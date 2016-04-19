@@ -14,6 +14,7 @@
 		CD9C45071CC4AA2D00AEBD2D /* ConvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9C45061CC4AA2D00AEBD2D /* ConvertViewController.swift */; };
 		CD9C45091CC6083300AEBD2D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9C45081CC6083300AEBD2D /* MapKit.framework */; };
 		CD9C450B1CC60DDD00AEBD2D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9C450A1CC60DDD00AEBD2D /* MapViewController.swift */; };
+		CD9C450D1CC63CF000AEBD2D /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9C450C1CC63CF000AEBD2D /* MoreViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CD9C45061CC4AA2D00AEBD2D /* ConvertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertViewController.swift; sourceTree = "<group>"; };
 		CD9C45081CC6083300AEBD2D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CD9C450A1CC60DDD00AEBD2D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CD9C450C1CC63CF000AEBD2D /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		CD157C581C8682F90079D5ED /* WorldTrotter */ = {
 			isa = PBXGroup;
 			children = (
+				CD9C450C1CC63CF000AEBD2D /* MoreViewController.swift */,
 				CD9C45061CC4AA2D00AEBD2D /* ConvertViewController.swift */,
 				CD9C450A1CC60DDD00AEBD2D /* MapViewController.swift */,
 				CD157C591C8682F90079D5ED /* AppDelegate.swift */,
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD9C45071CC4AA2D00AEBD2D /* ConvertViewController.swift in Sources */,
+				CD9C450D1CC63CF000AEBD2D /* MoreViewController.swift in Sources */,
 				CD9C450B1CC60DDD00AEBD2D /* MapViewController.swift in Sources */,
 				CD157C5A1C8682F90079D5ED /* AppDelegate.swift in Sources */,
 			);

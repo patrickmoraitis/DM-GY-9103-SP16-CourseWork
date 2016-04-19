@@ -26,7 +26,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is actually" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMc-0f-PlW">
                                 <rect key="frame" x="238.5" y="168" width="123.5" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltP-t9-9zF">
@@ -91,12 +91,22 @@
         <!--Map-->
         <scene sceneID="mTi-oy-3dn">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sLv-eY-TKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="csF-GD-VUf" customClass="MapViewController" customModule="WorldTrotter" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="MapIcon" id="Zbn-0W-dPx"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sLv-eY-TKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1791" y="322"/>
+        </scene>
+        <!--More View Controller-->
+        <scene sceneID="IRd-ID-zz1">
+            <objects>
+                <viewController id="yQy-dv-3os" customClass="MoreViewController" customModule="WorldTrotter" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="more" id="1KD-x7-Btk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t4l-jN-1pd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="979" y="-546"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="N82-cG-7j2">
@@ -110,6 +120,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Ndv-kU-UCg"/>
                         <segue destination="csF-GD-VUf" kind="relationship" relationship="viewControllers" id="Ek2-XK-Gwu"/>
+                        <segue destination="yQy-dv-3os" kind="relationship" relationship="viewControllers" id="f1Z-U2-Xwj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PWQ-kE-s0C" userLabel="First Responder" sceneMemberID="firstResponder"/>

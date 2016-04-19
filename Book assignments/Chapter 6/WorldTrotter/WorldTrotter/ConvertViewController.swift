@@ -14,7 +14,7 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ConvertViewController did load")
+        //print("ConvertViewController did load")
     }
     
     override func viewWillAppear(animated: Bool) {
