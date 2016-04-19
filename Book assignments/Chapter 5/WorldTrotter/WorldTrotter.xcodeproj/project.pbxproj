@@ -13,6 +13,7 @@
 		CD157C641C8682F90079D5ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD157C621C8682F90079D5ED /* LaunchScreen.storyboard */; };
 		CD9C45071CC4AA2D00AEBD2D /* ConvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9C45061CC4AA2D00AEBD2D /* ConvertViewController.swift */; };
 		CD9C45091CC6083300AEBD2D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9C45081CC6083300AEBD2D /* MapKit.framework */; };
+		CD9C450B1CC60DDD00AEBD2D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9C450A1CC60DDD00AEBD2D /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CD157C651C8682F90079D5ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD9C45061CC4AA2D00AEBD2D /* ConvertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertViewController.swift; sourceTree = "<group>"; };
 		CD9C45081CC6083300AEBD2D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CD9C450A1CC60DDD00AEBD2D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				CD9C45061CC4AA2D00AEBD2D /* ConvertViewController.swift */,
+				CD9C450A1CC60DDD00AEBD2D /* MapViewController.swift */,
 				CD157C591C8682F90079D5ED /* AppDelegate.swift */,
 				CD157C5D1C8682F90079D5ED /* Main.storyboard */,
 				CD157C601C8682F90079D5ED /* Assets.xcassets */,
@@ -94,6 +97,9 @@
 		CD157C4E1C8682F90079D5ED /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					isAct,
+				);
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Patrick Moraitis";
@@ -140,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD9C45071CC4AA2D00AEBD2D /* ConvertViewController.swift in Sources */,
+				CD9C450B1CC60DDD00AEBD2D /* MapViewController.swift in Sources */,
 				CD157C5A1C8682F90079D5ED /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
