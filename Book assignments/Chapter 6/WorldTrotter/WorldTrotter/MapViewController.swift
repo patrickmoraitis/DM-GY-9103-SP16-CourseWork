@@ -27,7 +27,8 @@ class MapViewController: UIViewController {
         
         view.addSubview(segControl)
         
-        let topConst = segControl.topAnchor.constraintEqualToAnchor(view.topAnchor)
+        //let topConst = segControl.topAnchor.constraintEqualToAnchor(view.topAnchor)
+        let topConst = segControl.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor, constant: 8)
         let leadConst = segControl.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor)
         let trailConst = segControl.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor)
         
