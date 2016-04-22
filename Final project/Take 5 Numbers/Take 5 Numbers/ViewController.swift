@@ -13,6 +13,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     let keyReuseID = "numKey" // also enter this string as the cell identifier in the storyboard
     var keyArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39"]
     
+    var keyToggle = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
 //BEGIN UICollectionViewDataSource protocol - https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionViewDataSource_protocol/
     
@@ -22,6 +23,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return keyArray.count
     }
     
+    
     // REQUIRED - define and the draw the cells at each item's index
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
@@ -30,8 +32,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         // custom class has an outlet the the cell's text label, sets the keyArray values to each key
         allKeyCells.keyLabel.text = self.keyArray[indexPath.item]
-        allKeyCells.keyLabel.textColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0) /* #ed3a8e */
-        //allKeyCells.keyLabel
+        
+        ///text color is #ed3a8e
+        allKeyCells.keyLabel.textColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
+        
+        allKeyCells.keyLabel.font = UIFont.boldSystemFontOfSize(22)
         
         // apply other design changes to all keys by calling a single object
         allKeyCells.backgroundColor = UIColor.whiteColor()
@@ -41,6 +46,28 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         //print(allKeyCells)
         return allKeyCells
+    }
+    
+//BEGIN UICollectionViewDelegate protocol - https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionViewDelegate_protocol/
+    
+    // change background color when user touches cell
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+        
+        let pressedKey = collectionView.cellForItemAtIndexPath(indexPath) as! NumKeyCViewCell
+        
+        if(keyToggle[indexPath.item+1] == 0){
+            pressedKey.backgroundColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
+            pressedKey.keyLabel.textColor = UIColor.whiteColor()
+            keyToggle[indexPath.item+1] = 1
+            
+            
+        }else if(keyToggle[indexPath.item+1] == 1){
+            pressedKey.backgroundColor = UIColor.whiteColor()
+            pressedKey.keyLabel.textColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
+            keyToggle[indexPath.item+1] = 0
+        }
+
+        //print("You picked #\(indexPath.item+1)!")
     }
 
 }
