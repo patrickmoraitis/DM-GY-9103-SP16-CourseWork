@@ -71,27 +71,42 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // change background color when user touches cell
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
-        
-        let pressedKey = collectionView.cellForItemAtIndexPath(indexPath) as! NumKeyCViewCell
-        
-        //select number
-        if(keyToggle[indexPath.item+1] == 0){
-            pressedKey.backgroundColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
-            pressedKey.keyLabel.textColor = UIColor.whiteColor()
-            keyToggle[indexPath.item+1] = 1
-            keysPressed++
-        }
-        //deselect number
-        else if(keyToggle[indexPath.item+1] == 1){
-            pressedKey.backgroundColor = UIColor.whiteColor()
-            pressedKey.keyLabel.textColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
-            keyToggle[indexPath.item+1] = 0
-            keysPressed--
-        }
 
-        //print(keysPressed)
-        //print("You picked #\(indexPath.item+1)!")
+            let pressedKey = collectionView.cellForItemAtIndexPath(indexPath) as! NumKeyCViewCell
+        
+            //select number
+            if(keyToggle[indexPath.item+1] == 0){
+                
+                //error alert if picking more than 5 numbers
+                if keysPressed == 5 {
+                    
+                let take6error = UIAlertController(title: "Out of Range Error", message: "Pick a maximum of 5 numbers", preferredStyle: UIAlertControllerStyle.Alert)
+                take6error.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(take6error, animated: false, completion: nil)
+                
+                }
+                else{
+                    
+                pressedKey.backgroundColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
+                pressedKey.keyLabel.textColor = UIColor.whiteColor()
+                keyToggle[indexPath.item+1] = 1
+                keysPressed++
+                
+                }
+            }
+            //deselect number, error handling doesn't apply when removing numbers
+            else if(keyToggle[indexPath.item+1] == 1){
+                pressedKey.backgroundColor = UIColor.whiteColor()
+                pressedKey.keyLabel.textColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
+                keyToggle[indexPath.item+1] = 0
+                keysPressed--
+            }
+
+            //print(keysPressed)
+            //print("You picked #\(indexPath.item+1)!")
+            
+        }
     }
 
-}
+
 
