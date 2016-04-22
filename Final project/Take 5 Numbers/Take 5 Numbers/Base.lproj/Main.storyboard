@@ -3,8 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Table View Controller-->
@@ -16,11 +14,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="kkX-ay-iK8">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="logCell" id="kkX-ay-iK8">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kkX-ay-iK8" id="Lv3-UU-615">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -33,7 +31,7 @@
                     <navigationItem key="navigationItem" id="r7u-Oe-DRK">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" highlighted="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="0v8-Ki-gmI">
-                            <rect key="frame" x="91" y="7" width="194" height="30"/>
+                            <rect key="frame" x="90.5" y="7" width="194" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="All"/>
@@ -41,7 +39,7 @@
                                 <segment title="Lose"/>
                             </segments>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="6Gs-CD-PNn">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="6Gs-CD-PNn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="0b9-kq-WyB">
                                 <rect key="frame" x="337" y="11" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -73,7 +71,7 @@
         <!--Take 5 Numbers-->
         <scene sceneID="bGW-cp-1oy">
             <objects>
-                <viewController id="KJt-MK-Cf1" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="KJt-MK-Cf1" customClass="ViewController" customModule="Take_5_Numbers" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rsm-5K-Lyf"/>
                         <viewControllerLayoutGuide type="bottom" id="XBd-Pp-mGu"/>
@@ -83,33 +81,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cIL-pj-6S9">
-                                <rect key="frame" x="-4" y="384" width="383" height="234"/>
+                                <rect key="frame" x="0.0" y="398" width="375" height="220"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1V6-No-TU0">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="bRu-r8-MwS"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="12" minimumInteritemSpacing="6" id="W0m-Yv-Zga">
+                                    <size key="itemSize" width="31" height="42"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="3" minY="10" maxX="3" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="numKey" id="EcK-8c-ZSo">
-                                        <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" reuseIdentifier="numKey" id="EcK-8c-ZSo" userLabel="Collection View Cell" customClass="NumKeyCViewCell" customModule="Take_5_Numbers" customModuleProvider="target">
+                                        <rect key="frame" x="3" y="10" width="31" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="31" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ScO-la-aH0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="31" height="42"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="ScO-la-aH0" firstAttribute="top" secondItem="EcK-8c-ZSo" secondAttribute="top" id="0bR-6B-yVe"/>
+                                            <constraint firstAttribute="trailing" secondItem="ScO-la-aH0" secondAttribute="trailing" id="C36-iW-IlZ"/>
+                                            <constraint firstItem="ScO-la-aH0" firstAttribute="leading" secondItem="EcK-8c-ZSo" secondAttribute="leading" id="YeG-iT-M2Y"/>
+                                            <constraint firstAttribute="bottom" secondItem="ScO-la-aH0" secondAttribute="bottom" id="daJ-Dr-AUl"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="keyLabel" destination="ScO-la-aH0" id="rSk-iW-3YT"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="KJt-MK-Cf1" id="4Ya-ZJ-rW4"/>
+                                    <outlet property="delegate" destination="KJt-MK-Cf1" id="tJx-8m-teI"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cIL-pj-6S9" firstAttribute="leading" secondItem="UPi-zl-xgA" secondAttribute="leadingMargin" constant="-20" id="NdS-aU-VCY"/>
-                            <constraint firstItem="cIL-pj-6S9" firstAttribute="top" secondItem="Rsm-5K-Lyf" secondAttribute="bottom" multiplier="6:1" id="VMH-my-B09"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cIL-pj-6S9" secondAttribute="trailing" constant="-20" id="i77-al-LSF"/>
-                            <constraint firstItem="XBd-Pp-mGu" firstAttribute="top" secondItem="cIL-pj-6S9" secondAttribute="bottom" id="qrA-Bf-rA6"/>
+                            <constraint firstItem="cIL-pj-6S9" firstAttribute="leading" secondItem="UPi-zl-xgA" secondAttribute="leading" id="aRe-Na-qdH"/>
+                            <constraint firstAttribute="trailing" secondItem="cIL-pj-6S9" secondAttribute="trailing" id="ilw-zg-f5v"/>
+                            <constraint firstItem="XBd-Pp-mGu" firstAttribute="top" secondItem="cIL-pj-6S9" secondAttribute="bottom" id="jfJ-Kb-6pt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Take 5 Numbers" id="51f-dw-VH1">
@@ -161,9 +182,6 @@
                 <navigationBar contentMode="scaleToFill" id="kLa-Nr-Rxf">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <items>
-                        <navigationItem title="Title" id="z8y-XW-u1p"/>
-                    </items>
                 </navigationBar>
             </objects>
             <point key="canvasLocation" x="-1282.5" y="-215.5"/>

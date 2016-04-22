@@ -8,18 +8,40 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+   
+    let keyReuseID = "numKey" // also enter this string as the cell identifier in the storyboard
+    var keyArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39"]
+    
+    
+//BEGIN UICollectionViewDataSource protocol - https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionViewDataSource_protocol/
+    
+    // REQUIRED - tells the collectionview the amount of viewcells, in this case the length of keyArray
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //print(keyArray.count)
+        return keyArray.count
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // REQUIRED - define and the draw the cells at each item's index
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        // creates all keys as! a custom class and stores it all in one an object 
+        let allKeyCells = collectionView.dequeueReusableCellWithReuseIdentifier(keyReuseID, forIndexPath: indexPath) as! NumKeyCViewCell
+        
+        // custom class has an outlet the the cell's text label, sets the keyArray values to each key
+        allKeyCells.keyLabel.text = self.keyArray[indexPath.item]
+        allKeyCells.keyLabel.textColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0) /* #ed3a8e */
+        //allKeyCells.keyLabel
+        
+        // apply other design changes to all keys by calling a single object
+        allKeyCells.backgroundColor = UIColor.whiteColor()
+        allKeyCells.layer.borderColor = UIColor.grayColor().CGColor
+        allKeyCells.layer.borderWidth = 1
+        allKeyCells.layer.cornerRadius = 8
+        
+        //print(allKeyCells)
+        return allKeyCells
     }
-
 
 }
 
