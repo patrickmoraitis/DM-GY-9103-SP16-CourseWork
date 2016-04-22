@@ -9,11 +9,30 @@
 import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-   
-    let keyReuseID = "numKey" // also enter this string as the cell identifier in the storyboard
-    var keyArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39"]
     
-    var keyToggle = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    //var keyArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39"]
+    //var keyToggle = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    
+    
+    let keyReuseID = "numKey"
+    
+    var keyArray: [Int] = []
+    var keyToggle: [Int] = []
+    var keysPressed: Int = 0
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        for var i=1; i<=39; ++i {
+            keyArray.append(i)
+            keyToggle.append(0)
+        }
+        
+        //print(keyArray2);print(keyToggle2)
+        
+        super.init(coder: aDecoder)
+    }
+
+
     
 //BEGIN UICollectionViewDataSource protocol - https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionViewDataSource_protocol/
     
@@ -31,7 +50,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let allKeyCells = collectionView.dequeueReusableCellWithReuseIdentifier(keyReuseID, forIndexPath: indexPath) as! NumKeyCViewCell
         
         // custom class has an outlet the the cell's text label, sets the keyArray values to each key
-        allKeyCells.keyLabel.text = self.keyArray[indexPath.item]
+        allKeyCells.keyLabel.text =  "\(self.keyArray[indexPath.item])"
         
         ///text color is #ed3a8e
         allKeyCells.keyLabel.textColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
@@ -41,7 +60,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // apply other design changes to all keys by calling a single object
         allKeyCells.backgroundColor = UIColor.whiteColor()
         allKeyCells.layer.borderColor = UIColor.grayColor().CGColor
-        allKeyCells.layer.borderWidth = 1
+        allKeyCells.layer.borderWidth = 2
         allKeyCells.layer.cornerRadius = 8
         
         //print(allKeyCells)
@@ -55,18 +74,22 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         let pressedKey = collectionView.cellForItemAtIndexPath(indexPath) as! NumKeyCViewCell
         
+        //select number
         if(keyToggle[indexPath.item+1] == 0){
             pressedKey.backgroundColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
             pressedKey.keyLabel.textColor = UIColor.whiteColor()
             keyToggle[indexPath.item+1] = 1
-            
-            
-        }else if(keyToggle[indexPath.item+1] == 1){
+            keysPressed++
+        }
+        //deselect number
+        else if(keyToggle[indexPath.item+1] == 1){
             pressedKey.backgroundColor = UIColor.whiteColor()
             pressedKey.keyLabel.textColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
             keyToggle[indexPath.item+1] = 0
+            keysPressed--
         }
 
+        //print(keysPressed)
         //print("You picked #\(indexPath.item+1)!")
     }
 
