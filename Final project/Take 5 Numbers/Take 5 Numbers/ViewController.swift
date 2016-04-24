@@ -25,19 +25,64 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     //will hold maxKeys (39) on/off switches that map to key array. defaults to all zeros
     var keyToggle: [Bool] = []
     
-    //holds the 5 numbers currently picked, output version of keyToggle. defaults to all zeros
-    var numbersPicked: [Int] = [0,0,0,0,0]
+    //holds the numbers currently picked, output version of keyToggle. defaults to all zeros
+    var numbersPicked: [Int] = []
     
     //holds number of how many numbers are selected, defaults with 0 and must not exceed maxPick (5)
     var keysPressed: Int = 0
     
-    
+    //function
+    func updateNumbersPicked() {
+        
+        //resets array to empty
+        for var k=0; k<maxPick; ++k {
+            numbersPicked[k] = 0
+        }
+        //print(numbersPicked)//numbersPicked = [0,0,0,0,0]
+
+        var i = 0;
+        
+        for var j=0; j<maxKeys; ++j {
+            if keyToggle[j] {
+                numbersPicked[i] = j+1
+                i++
+            }
+        }
+        //print(keysPressed)
+        print(numbersPicked)
+
+
+        /*
+        for var i=0; i<maxPick; ++i {
+            print(numbersPicked)
+            print(keyToggle[0])
+            
+            if keyToggle[0] {numbersPicked[0] = 1; i++;}
+            else
+            {
+                for var j=numbersPicked[i]; j<maxKeys; ++j {
+                    print(j)
+                    print(numbersPicked)
+
+                    if keyToggle[j] {
+                        numbersPicked[i] = j+1
+                        j = maxKeys
+                    }
+                }
+            }
+        }*/
+        //print(numbersPicked)
+    }
     
     required init?(coder aDecoder: NSCoder) {
         
         for var i=1; i<=maxKeys; ++i {
             keyArray.append(i)
             keyToggle.append(false)
+        }
+        
+        for var i=0; i<maxPick; ++i {
+            numbersPicked.append(0)
         }
         
         //keyArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
@@ -158,6 +203,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 //update variables related to numbers picked
                 keyToggle[indexPath.item] = true
                 keysPressed++
+                
+                updateNumbersPicked()
                 
                 //print (keyToggle.count)
                 //print (keyArray.count)
