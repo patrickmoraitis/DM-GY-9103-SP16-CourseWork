@@ -31,17 +31,19 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     //holds number of how many numbers are selected, defaults with 0 and must not exceed maxPick (5)
     var keysPressed: Int = 0
     
-    //function
+    //function to translate data from number keyboard to picked numbers view
     func updateNumbersPicked() {
         
         //resets array to empty
         for var k=0; k<maxPick; ++k {
             numbersPicked[k] = 0
         }
-        //print(numbersPicked)//numbersPicked = [0,0,0,0,0]
 
+        // i increments by 1 each time a number is added to numbersPicked array
         var i = 0;
         
+        //loop through the keyToggle array and move keys that are pressed to the numbersPicked array
+        //sorts the numbers in ascending order, writing from left to right, empty cells equal 0
         for var j=0; j<maxKeys; ++j {
             if keyToggle[j] {
                 numbersPicked[i] = j+1
@@ -50,28 +52,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         //print(keysPressed)
         print(numbersPicked)
-
-
-        /*
-        for var i=0; i<maxPick; ++i {
-            print(numbersPicked)
-            print(keyToggle[0])
-            
-            if keyToggle[0] {numbersPicked[0] = 1; i++;}
-            else
-            {
-                for var j=numbersPicked[i]; j<maxKeys; ++j {
-                    print(j)
-                    print(numbersPicked)
-
-                    if keyToggle[j] {
-                        numbersPicked[i] = j+1
-                        j = maxKeys
-                    }
-                }
-            }
-        }*/
-        //print(numbersPicked)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -217,6 +197,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 pressedKey.keyLabel.textColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
                 keyToggle[indexPath.item] = false
                 keysPressed--
+                
+                updateNumbersPicked()
                 
                 //print(keysPressed)
 
