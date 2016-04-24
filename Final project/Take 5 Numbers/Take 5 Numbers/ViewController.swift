@@ -10,9 +10,6 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-   // let keyCollectionView = UICollectionView()
-   // let pickCollectionView = UICollectionView()
-    
     //constants for the UICollectionViewCell ReuseIdentifier, must match the value entered via IB
     let keyReuseID = "numKey"
     let pickReuseID = "pickCell"
@@ -22,18 +19,19 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     let maxKeys:Int = 39
     let maxPick:Int = 5
     
-    //declare 3 empty integer arrays for now. later, both arrays length will equal 'maxKeys' (39)
+    //declare 2 empty arrays for now. later, both arrays length will equal 'maxKeys' (39)
     //will hold all whole numbers between 1 and maxKeys (39) used to create the number picker grid
     var keyArray: [Int] = []
-    //will hold maxKeys (39) on/off switches that map to key array, abstraction of the numbers selected
+    //will hold maxKeys (39) on/off switches that map to key array. defaults to all zeros
     var keyToggle: [Bool] = []
-    //holds the numbers currently picked, output version of keyToggle. defaults to all zeros
+    
+    //holds the 5 numbers currently picked, output version of keyToggle. defaults to all zeros
     var numbersPicked: [Int] = [0,0,0,0,0]
     
     //holds number of how many numbers are selected, defaults with 0 and must not exceed maxPick (5)
     var keysPressed: Int = 0
     
-
+    
     
     required init?(coder aDecoder: NSCoder) {
         
@@ -83,19 +81,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         if(collectionView.tag == maxKeys){
         
-            // creates all keys as! a custom class and stores it all in one an object
+            //creates all keys as! a custom class and stores it all in one an object
             let allKeyCells = collectionView.dequeueReusableCellWithReuseIdentifier(keyReuseID, forIndexPath: indexPath) as! NumKeyCViewCell
             
-            // custom class has an outlet the the cell's text label, sets the keyArray values to each key
-            allKeyCells.keyLabel.text =  "\(self.keyArray[indexPath.item])"
-            allKeyCells.keyLabel.text =  "\(self.keyArray[indexPath.item])"
+            //NumKeyCViewCell class has an outlet to the cell's text label, keyLabel
+            //sets the numbers button text with that button's
+            allKeyCells.keyLabel.text =  "\(keyArray[indexPath.item])"
             
-            ///text color is #ed3a8e
+            ///text color is hot pink #ed3a8e
             allKeyCells.keyLabel.textColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
             
-            allKeyCells.keyLabel.font = UIFont.boldSystemFontOfSize(22)
-            
             // apply other design changes to all keys by calling a single object
+            allKeyCells.keyLabel.font = UIFont.boldSystemFontOfSize(22)
             allKeyCells.backgroundColor = UIColor.whiteColor()
             allKeyCells.layer.borderColor = UIColor.whiteColor().CGColor
             allKeyCells.layer.borderWidth = 2
@@ -109,12 +106,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
             let allPickCells = collectionView.dequeueReusableCellWithReuseIdentifier(pickReuseID, forIndexPath: indexPath) as! NumKeyCViewCell
             
+            allPickCells.pickLabel.text =  "\(self.numbersPicked[indexPath.item])"
+            allPickCells.pickLabel.textColor = UIColor.blackColor()
+            //allPickCells.pickLabel.font = UIFont.systemFontOfSize(22)
+            allPickCells.backgroundColor = UIColor.lightGrayColor()
+            allPickCells.layer.borderColor = UIColor.whiteColor().CGColor
+            allPickCells.layer.borderWidth = 1
+            allPickCells.layer.cornerRadius = 30
+            
             //print(allPickCells)
             return allPickCells
         }
         else{
-            print("App will crash if returned object is undefined")
-            print(UICollectionViewCell())
+            print("App will crash because returned object is undefined")
+            //print(UICollectionViewCell())
             return UICollectionViewCell()
         }
     }
@@ -127,14 +132,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         if collectionView.tag == maxKeys {
             
-            //  /*
+            //
+                /*
             print(collectionView.tag)
             print(indexPath.section)
             print(indexPath.row)
+            print(indexPath.item)
             print(collectionView.cellForItemAtIndexPath(indexPath))
             print("---------")
-            //  */
-            
+            // 
+                */
             
             //constant reference to the cell that was tapped
             let pressedKey = collectionView.cellForItemAtIndexPath(indexPath) as! NumKeyCViewCell
@@ -144,7 +151,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             if !keyToggle[indexPath.item] && keysPressed < maxPick {
                 
                 //update pressed cell style to selected
-                pressedKey.backgroundColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
+                //pressedKey.backgroundColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
+                pressedKey.backgroundColor = UIColor.darkGrayColor()
                 pressedKey.keyLabel.textColor = UIColor.whiteColor()
                 
                 //update variables related to numbers picked
