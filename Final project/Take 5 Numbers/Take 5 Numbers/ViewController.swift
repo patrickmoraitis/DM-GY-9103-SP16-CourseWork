@@ -52,6 +52,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         //print(keysPressed)
         print(numbersPicked)
+        
+     
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -140,7 +142,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             allPickCells.layer.cornerRadius = 30
             
             //print(allPickCells)
+            
+            dispatch_async(dispatch_get_main_queue(), {collectionView.reloadData()})
+            
             return allPickCells
+            
         }
         else{
             print("App will crash because returned object is undefined")
@@ -221,10 +227,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
         //print(keysPressed)
         //print("You picked #\(indexPath.item+1)!")
-            
+        
     }
 //END UICollectionViewDelegate protocol
-    
     
     
     
