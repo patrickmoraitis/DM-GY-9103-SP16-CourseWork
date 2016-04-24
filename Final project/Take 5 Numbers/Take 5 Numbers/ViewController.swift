@@ -10,20 +10,25 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    @IBOutlet var collectionView: [UICollectionView]!
+    
     @IBOutlet weak var pickToolbar: UIToolbar!
 
     @IBOutlet weak var resetButton: UIBarButtonItem!
+    @IBOutlet weak var wagerButton: UIBarButtonItem!
     
-    @IBOutlet var collectionView: [UICollectionView]!
-        
+    
     @IBAction func resetPick(sender: UIBarButtonItem) {
         
         keyToggle = []
         keysPressed = 0
-        resetButton.enabled = false
         for var i=1; i<=maxKeys; ++i {keyToggle.append(false)}
         
         updateNumbersPicked()
+    }
+    
+    @IBAction func wagerPick(sender: UIBarButtonItem) {
+    
     }
     
     
@@ -100,6 +105,19 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // REQUIRED - define and the draw the cells at each item's index
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        if keysPressed == 0 {
+            resetButton.enabled = false
+            wagerButton.enabled = false
+        }
+        else if keysPressed == 5 {
+            resetButton.enabled = true
+            wagerButton.enabled = true
+        }
+        else{
+            resetButton.enabled = true
+            wagerButton.enabled = false
+        }
         
         //draws the number picker keyboard
         if(collectionView.tag == maxKeys){
