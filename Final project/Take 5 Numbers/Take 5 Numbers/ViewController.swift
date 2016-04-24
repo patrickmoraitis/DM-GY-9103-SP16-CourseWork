@@ -130,16 +130,34 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         }
         else if(collectionView.tag == maxPick){
+            
+            let teal = UIColor(red: 0.0431, green: 0.5569, blue: 0.5333, alpha: 1.0)
+            let bluegrey = UIColor(red: 0.6667, green: 0.749, blue: 0.7451, alpha: 1.0)
+
+            
+            if(keysPressed == 5){
+                //#0b8e88 teal
+                collectionView.backgroundColor = teal
+            }else{
+                //#aabfbe blue grey
+                collectionView.backgroundColor = bluegrey
+            }
         
             let allPickCells = collectionView.dequeueReusableCellWithReuseIdentifier(pickReuseID, forIndexPath: indexPath) as! NumKeyCViewCell
             
-            allPickCells.pickLabel.text =  "\(self.numbersPicked[indexPath.item])"
-            allPickCells.pickLabel.textColor = UIColor.blackColor()
-            //allPickCells.pickLabel.font = UIFont.systemFontOfSize(22)
-            allPickCells.backgroundColor = UIColor.lightGrayColor()
+            allPickCells.pickLabel.text =  "\(numbersPicked[indexPath.item])"
             allPickCells.layer.borderColor = UIColor.whiteColor().CGColor
-            allPickCells.layer.borderWidth = 1
+            allPickCells.layer.borderWidth = 2
             allPickCells.layer.cornerRadius = 30
+            
+            if numbersPicked[indexPath.item] == 0 {
+                allPickCells.pickLabel.textColor = UIColor.whiteColor()
+                allPickCells.backgroundColor = bluegrey
+            }
+            else{
+                allPickCells.pickLabel.textColor = UIColor.whiteColor()
+                allPickCells.backgroundColor = teal
+            }
             
             //print(allPickCells)
             
@@ -183,7 +201,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 
                 //update pressed cell style to selected
                 //pressedKey.backgroundColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
-                pressedKey.backgroundColor = UIColor.darkGrayColor()
+                pressedKey.backgroundColor = UIColor(red: 0.4392, green: 0.149, blue: 0.2784, alpha: 1.0) //#702647
                 pressedKey.keyLabel.textColor = UIColor.whiteColor()
                 
                 //update variables related to numbers picked
@@ -213,7 +231,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             else if keysPressed>=maxPick{
                 let take6error = UIAlertController(title: "One too many!", message: "Pick must have \(maxPick) numbers", preferredStyle: UIAlertControllerStyle.Alert)
                 take6error.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(take6error, animated: false, completion: nil)
+                presentViewController(take6error, animated: false, completion: nil)
             }
             else{
                 print("¿¿¿unknown error???")
