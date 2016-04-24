@@ -22,12 +22,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     let maxKeys:Int = 39
     let maxPick:Int = 5
     
-    //declare 2 empty integer arrays for now. later, both arrays length will equal 'maxKeys' (39)
+    //declare 3 empty integer arrays for now. later, both arrays length will equal 'maxKeys' (39)
     //will hold all whole numbers between 1 and maxKeys (39) used to create the number picker grid
     var keyArray: [Int] = []
     //will hold maxKeys (39) on/off switches that map to key array, abstraction of the numbers selected
     var keyToggle: [Bool] = []
+    //holds the numbers currently picked, output version of keyToggle. defaults to all zeros
+    var numbersPicked: [Int] = [0,0,0,0,0]
+    
+    //holds number of how many numbers are selected, defaults with 0 and must not exceed maxPick (5)
     var keysPressed: Int = 0
+    
+
     
     required init?(coder aDecoder: NSCoder) {
         
@@ -53,14 +59,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
         //print the tag of the collectionView currently in scope
         //with Take5 rules, 39 print statements of 39 followed by 5 prints of 5
-        print(collectionView.tag)
+        //print(collectionView.tag)
         
         if(collectionView.tag == maxKeys){
-            print("numberOfItemsInSection = \(maxKeys)")
+            //print("numberOfItemsInSection = \(maxKeys)")
             return maxKeys
         }
         else if(collectionView.tag == maxPick){
-            print("numberOfItemsInSection = \(maxPick)")
+            //print("numberOfItemsInSection = \(maxPick)")
             return maxPick
         }
         else{
@@ -73,7 +79,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // REQUIRED - define and the draw the cells at each item's index
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        print(collectionView.tag)
+        //print(collectionView.tag)
         
         if(collectionView.tag == maxKeys){
         
@@ -118,43 +124,63 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     //function runs when user taps on a cell
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
-
-        //constant reference to the cell that was tapped
-        let pressedKey = collectionView.cellForItemAtIndexPath(indexPath) as! NumKeyCViewCell
         
-        //PICK NUMBER IF the cell selected is not picked and total numbers picked is 5 or less
-        if !keyToggle[indexPath.item+1] && keysPressed < maxPick {
+        if collectionView.tag == maxKeys {
             
-            //update pressed cell style to selected
-            pressedKey.backgroundColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
-            pressedKey.keyLabel.textColor = UIColor.whiteColor()
+            //  /*
+            print(collectionView.tag)
+            print(indexPath.section)
+            print(indexPath.row)
+            print(collectionView.cellForItemAtIndexPath(indexPath))
+            print("---------")
+            //  */
             
-            //update variables related to numbers picked
-            keyToggle[indexPath.item+1] = true
-            keysPressed++
             
-            print(keysPressed)
-    
-        }
-        //UNPICK NUMBER IF the cell was already selected
-        else if keyToggle[indexPath.item+1] {
-            pressedKey.backgroundColor = UIColor.whiteColor()
-            pressedKey.keyLabel.textColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
-            keyToggle[indexPath.item+1] = false
-            keysPressed--
+            //constant reference to the cell that was tapped
+            let pressedKey = collectionView.cellForItemAtIndexPath(indexPath) as! NumKeyCViewCell
+            //print(pressedKey)
             
-            print(keysPressed)
+            //PICK NUMBER IF the cell selected is not picked and total numbers picked is 5 or less
+            if !keyToggle[indexPath.item] && keysPressed < maxPick {
+                
+                //update pressed cell style to selected
+                pressedKey.backgroundColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
+                pressedKey.keyLabel.textColor = UIColor.whiteColor()
+                
+                //update variables related to numbers picked
+                keyToggle[indexPath.item] = true
+                keysPressed++
+                
+                //print (keyToggle.count)
+                //print (keyArray.count)
+                //print(keysPressed)
+        
+            }
+            //UNPICK NUMBER IF the cell was already selected
+            else if keyToggle[indexPath.item] {
+                pressedKey.backgroundColor = UIColor.whiteColor()
+                pressedKey.keyLabel.textColor = UIColor(red: 0.9294, green: 0.2275, blue: 0.5569, alpha: 1.0)
+                keyToggle[indexPath.item] = false
+                keysPressed--
+                
+                //print(keysPressed)
 
+            }
+            //ERROR ALERT IF picking more than 5 numbers
+            else if keysPressed>=maxPick{
+                let take6error = UIAlertController(title: "One too many!", message: "Pick must have \(maxPick) numbers", preferredStyle: UIAlertControllerStyle.Alert)
+                take6error.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(take6error, animated: false, completion: nil)
+            }
+            else{
+                print("¿¿¿unknown error???")
+            }
         }
-        //ERROR ALERT IF picking more than 5 numbers
-        else if keysPressed>=maxPick{
-            let take6error = UIAlertController(title: "One too many!", message: "Pick must have \(maxPick) numbers", preferredStyle: UIAlertControllerStyle.Alert)
-            take6error.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(take6error, animated: false, completion: nil)
+        else if collectionView.tag == maxPick {
+            //let pressedKey = collectionView.cellForItemAtIndexPath(indexPath) as! NumKeyCViewCell
+            print("pick cell clicked, nothing else should happen")
         }
-        else{
-            print("unknown error")
-        }
+        else{print("unknown clicked")}
 
         //print(keysPressed)
         //print("You picked #\(indexPath.item+1)!")
