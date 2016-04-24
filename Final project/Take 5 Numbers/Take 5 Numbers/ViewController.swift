@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var pickToolbar: UIToolbar!
+
+    @IBOutlet weak var resetButton: UIBarButtonItem!
     
     @IBOutlet var collectionView: [UICollectionView]!
         
@@ -18,6 +20,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         keyToggle = []
         keysPressed = 0
+        resetButton.enabled = false
         for var i=1; i<=maxKeys; ++i {keyToggle.append(false)}
         
         updateNumbersPicked()
@@ -122,6 +125,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             if keyToggle[indexPath.item]{
                 allKeyCells.backgroundColor = UIColor(red: 0.4392, green: 0.149, blue: 0.2784, alpha: 1.0) //#702647
                 allKeyCells.keyLabel.textColor = UIColor.whiteColor()
+                resetButton.enabled = true
             }
             
             //print(allKeyCells)

@@ -179,7 +179,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfK-jP-40K">
                                 <rect key="frame" x="0.0" y="334" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem tag="1" title="Reset" style="done" id="rPD-qd-cMl">
+                                    <barButtonItem tag="1" enabled="NO" title="Reset" style="done" id="rPD-qd-cMl">
                                         <color key="tintColor" red="0.89019607840000003" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="resetPick:" destination="KJt-MK-Cf1" id="8qx-RP-3eq"/>
@@ -227,6 +227,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="pickToolbar" destination="IfK-jP-40K" id="ynk-Br-GGp"/>
+                        <outlet property="resetButton" destination="rPD-qd-cMl" id="G37-9c-PoM"/>
                         <outletCollection property="collectionView" destination="SaS-o3-VEN" collectionClass="NSMutableArray" id="AhJ-1F-yt5"/>
                         <outletCollection property="collectionView" destination="cIL-pj-6S9" collectionClass="NSMutableArray" id="roc-fH-qvs"/>
                     </connections>
