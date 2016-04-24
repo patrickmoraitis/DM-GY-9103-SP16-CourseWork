@@ -40,8 +40,8 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="rfR-Aj-Dom" id="NRB-Tz-ysp"/>
-                            <outlet property="delegate" destination="rfR-Aj-Dom" id="MIH-hb-ZL4"/>
+                            <outlet property="dataSource" destination="rfR-Aj-Dom" id="gBR-gE-oB3"/>
+                            <outlet property="delegate" destination="rfR-Aj-Dom" id="hf1-ef-oKV"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="r7u-Oe-DRK">
@@ -62,10 +62,13 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Pv3-TZ-JBd" id="e6V-bU-zpG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wA-Bk-3OB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-172.5" y="164.5"/>
+            <point key="canvasLocation" x="-24.5" y="316.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Np-ZU-419">
@@ -204,9 +207,6 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="MMP-IH-BUK"/>
                                     <barButtonItem tag="1" enabled="NO" title="Place Bet" style="done" id="wsS-En-f6r">
                                         <color key="tintColor" red="0.89019607840000003" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <action selector="wagerPick:" destination="KJt-MK-Cf1" id="T83-xY-qPa"/>
-                                        </connections>
                                     </barButtonItem>
                                 </items>
                                 <connections>
@@ -251,7 +251,6 @@
                     <connections>
                         <outlet property="pickToolbar" destination="IfK-jP-40K" id="ynk-Br-GGp"/>
                         <outlet property="resetButton" destination="rPD-qd-cMl" id="G37-9c-PoM"/>
-                        <outlet property="wagerButton" destination="wsS-En-f6r" id="ewm-n9-qOv"/>
                         <outletCollection property="collectionView" destination="SaS-o3-VEN" collectionClass="NSMutableArray" id="AhJ-1F-yt5"/>
                         <outletCollection property="collectionView" destination="cIL-pj-6S9" collectionClass="NSMutableArray" id="roc-fH-qvs"/>
                     </connections>

@@ -15,8 +15,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var pickToolbar: UIToolbar!
 
     @IBOutlet weak var resetButton: UIBarButtonItem!
-    @IBOutlet weak var wagerButton: UIBarButtonItem!
-    
     
     @IBAction func resetPick(sender: UIBarButtonItem) {
         
@@ -25,10 +23,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         for var i=1; i<=maxKeys; ++i {keyToggle.append(false)}
         
         updateNumbersPicked()
-    }
-    
-    @IBAction func wagerPick(sender: UIBarButtonItem) {
-    
     }
     
     
@@ -108,15 +102,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         if keysPressed == 0 {
             resetButton.enabled = false
-            wagerButton.enabled = false
+            //wagerButton.enabled = false
         }
         else if keysPressed == 5 {
             resetButton.enabled = true
-            wagerButton.enabled = true
+            //wagerButton.enabled = true
         }
         else{
             resetButton.enabled = true
-            wagerButton.enabled = false
+            //wagerButton.enabled = false
         }
         
         //draws the number picker keyboard

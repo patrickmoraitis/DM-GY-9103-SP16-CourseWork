@@ -11,35 +11,38 @@ import UIKit
 class WagerTableViewController: UITableViewController{
 
     // MARK : Properties
-
+    
     var wagers = [Wager]()
 
-    func loadSamples() {
-        let pic1 = UIImage(named: "pic1")!
-        let pick1 = Wager(name: "1,2,3,4,5", photo: pic1)!
-        
-        let pic2 = UIImage(named: "pic2")!
-        let pick2 = Wager(name: "21,22,23,34,35", photo: pic2)!
-        
-        let pic3 = UIImage(named: "pic3")!
-        let pick3 = Wager(name: "1,12,23,34,37", photo: pic3)!
-        
-        wagers += [pick1, pick2, pick3]
-    }
-    
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        loadSamples()
+        if let savedWagers = loadWagers(){
+            
+            wagers += savedWagers
+            
+        }else{
+            loadSamples()
+        }
     }
     
-    
+    func loadSamples() {
+        let pick1 = Wager(name: "1,2,3,4,5")!
+        
+        let pick2 = Wager(name: "21,22,23,34,35")!
+        
+        let pick3 = Wager(name: "1,12,23,34,37")!
+        
+        wagers += [pick1, pick2, pick3]
+        
+        print(wagers)
+
+    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
-    
+
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return wagers.count
@@ -55,11 +58,27 @@ class WagerTableViewController: UITableViewController{
         let wager = wagers[indexPath.row]
         
         cell.pickLabel.text = wager.name
-        cell.picView.image = wager.photo
         
         return cell
     }
     
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
+    }
+    
+    // MARK: NSCoding
+    
+    func saveWagers(){
+        
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(wagers, toFile: Wager.ArchiveURL.path!)
+        
+        if !isSuccessfulSave {print("Error Saving")}
+        
+    }
+    
+    func loadWagers() -> [Wager]? {
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(Wager.ArchiveURL.path!) as? [Wager]
+    }
 
     
     
