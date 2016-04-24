@@ -10,6 +10,29 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    @IBOutlet weak var pickToolbar: UIToolbar!
+    
+    @IBOutlet var collectionView: [UICollectionView]!
+        
+    @IBAction func resetPick(sender: UIBarButtonItem) {
+        
+        keyToggle = []
+        numbersPicked = []
+        keysPressed = 0
+        
+        for var i=1; i<=maxKeys; ++i {
+            keyToggle.append(false)
+        }
+        
+        for var i=0; i<maxPick; ++i {
+            numbersPicked.append(0)
+        }
+        
+        updateNumbersPicked()
+        print(keyArray)
+    }
+    
+    
     //constants for the UICollectionViewCell ReuseIdentifier, must match the value entered via IB
     let keyReuseID = "numKey"
     let pickReuseID = "pickCell"
@@ -50,9 +73,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 i++
             }
         }
-        //print(keysPressed)
-        print(numbersPicked)
         
+        //collectionView.first!.reloadData()
+        //collectionView.last!.reloadData()
+        
+        collectionView.forEach {(collectionView) -> () in
+            collectionView.reloadData()
+        }
+        
+        //print(keysPressed)
+        //print(numbersPicked)
      
     }
     
@@ -81,7 +111,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // REQUIRED - tells the collectionview the amount of viewcells, in this case the length of keyArray
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
+
         //print the tag of the collectionView currently in scope
         //with Take5 rules, 39 print statements of 39 followed by 5 prints of 5
         //print(collectionView.tag)
@@ -107,6 +137,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         //print(collectionView.tag)
         
         if(collectionView.tag == maxKeys){
+            
         
             //creates all keys as! a custom class and stores it all in one an object
             let allKeyCells = collectionView.dequeueReusableCellWithReuseIdentifier(keyReuseID, forIndexPath: indexPath) as! NumKeyCViewCell
@@ -160,9 +191,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             }
             
             //print(allPickCells)
-            
-            dispatch_async(dispatch_get_main_queue(), {collectionView.reloadData()})
-            
             return allPickCells
             
         }
@@ -171,6 +199,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             //print(UICollectionViewCell())
             return UICollectionViewCell()
         }
+
     }
 //END UICollectionViewDataSource protocol
     
@@ -223,7 +252,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 keysPressed--
                 
                 updateNumbersPicked()
-                
+
                 //print(keysPressed)
 
             }
@@ -239,16 +268,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         else if collectionView.tag == maxPick {
             //let pressedKey = collectionView.cellForItemAtIndexPath(indexPath) as! NumKeyCViewCell
-            print("pick cell clicked, nothing else should happen")
+            //print("pick cell clicked, nothing else should happen")
         }
         else{print("unknown clicked")}
+        
+
 
         //print(keysPressed)
         //print("You picked #\(indexPath.item+1)!")
-        
+
     }
-//END UICollectionViewDelegate protocol
     
+//END UICollectionViewDelegate protocol
     
     
 }//close class

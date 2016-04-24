@@ -179,10 +179,16 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfK-jP-40K">
                                 <rect key="frame" x="0.0" y="334" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Item" id="rPD-qd-cMl">
-                                        <color key="tintColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <barButtonItem tag="1" title="Reset" style="done" id="rPD-qd-cMl">
+                                        <color key="tintColor" red="0.89019607840000003" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="resetPick:" destination="KJt-MK-Cf1" id="8qx-RP-3eq"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
+                                <connections>
+                                    <outlet property="delegate" destination="KJt-MK-Cf1" id="hHR-9i-Puy"/>
+                                </connections>
                             </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gambling problem? Dial 1.800.GAMBLER or visit 800GAMBLER.ORG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOh-Zy-faV">
                                 <rect key="frame" x="0.0" y="588" width="375" height="30"/>
@@ -219,6 +225,11 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="pickToolbar" destination="IfK-jP-40K" id="ynk-Br-GGp"/>
+                        <outletCollection property="collectionView" destination="SaS-o3-VEN" collectionClass="NSMutableArray" id="AhJ-1F-yt5"/>
+                        <outletCollection property="collectionView" destination="cIL-pj-6S9" collectionClass="NSMutableArray" id="roc-fH-qvs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZYb-6i-2HB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
