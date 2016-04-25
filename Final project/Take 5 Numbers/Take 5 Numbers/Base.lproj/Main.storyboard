@@ -9,24 +9,27 @@
         <scene sceneID="aiZ-KU-TTo">
             <objects>
                 <tableViewController id="rfR-Aj-Dom" customClass="WagerTableViewController" customModule="Take_5_Numbers" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" allowsSelection="NO" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="99" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pv3-TZ-JBd">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="99" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pv3-TZ-JBd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.89019607840000003" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <color key="sectionIndexTrackingBackgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="WagerTableViewCell" rowHeight="90" id="kkX-ay-iK8" customClass="WagerTableViewCell" customModule="Take_5_Numbers" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailButton" indentationWidth="0.0" reuseIdentifier="WagerTableViewCell" rowHeight="90" id="kkX-ay-iK8" customClass="WagerTableViewCell" customModule="Take_5_Numbers" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kkX-ay-iK8" id="Lv3-UU-615">
                                     <rect key="frame" x="0.0" y="0.0" width="328" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LWK-Vz-Ta8">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic3" translatesAutoresizingMaskIntoConstraints="NO" id="LWK-Vz-Ta8">
                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1, 4, 7, 14, 22" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4m-ye-tad">
-                                            <rect key="frame" x="98" y="8" width="222" height="24"/>
-                                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                            <rect key="frame" x="98" y="0.0" width="230" height="89.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -55,12 +58,6 @@
                                 <segment title="Lose"/>
                             </segments>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="6Gs-CD-PNn">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="0b9-kq-WyB">
-                                <rect key="frame" x="337" y="11" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </button>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Pv3-TZ-JBd" id="e6V-bU-zpG"/>
@@ -305,6 +302,9 @@
             <point key="canvasLocation" x="-1282.5" y="-215.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pic3" width="128" height="128"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0UR-aC-1E5"/>
     </inferredMetricsTieBreakers>
