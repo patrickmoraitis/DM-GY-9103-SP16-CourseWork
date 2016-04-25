@@ -26,6 +26,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let destinationViewController = segue.destinationViewController as? WagerTableViewController {
+            print(numbersPicked)
             destinationViewController.wagers.append(Wager(name: numbersPicked.description)!)
         }
     }

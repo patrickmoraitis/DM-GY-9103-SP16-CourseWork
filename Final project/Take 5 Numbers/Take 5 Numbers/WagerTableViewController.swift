@@ -20,6 +20,8 @@ class WagerTableViewController: UITableViewController{
     override func viewDidLoad(){
         super.viewDidLoad()
         
+        navigationItem.leftBarButtonItem = editButtonItem()
+        
         if wagers.count == 1{
             wagers += [pick1, pick2, pick3]
         }
@@ -63,9 +65,22 @@ class WagerTableViewController: UITableViewController{
         return cell
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
+    
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            wagers.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
     }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+
     
     // MARK: NSCoding
     
