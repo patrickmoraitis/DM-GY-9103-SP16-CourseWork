@@ -13,29 +13,29 @@ class WagerTableViewController: UITableViewController{
     // MARK : Properties
     
     var wagers = [Wager]()
-
+    let pick1 = Wager(name: "1,2,3,4,5")!
+    let pick2 = Wager(name: "21,22,23,34,35")!
+    let pick3 = Wager(name: "1,12,23,34,37")!
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         
+        if wagers.count == 1{
+            wagers += [pick1, pick2, pick3]
+        }
+        
         if let savedWagers = loadWagers(){
-            
+
             wagers += savedWagers
             
         }else{
             loadSamples()
         }
+        
+        saveWagers()
     }
     
     func loadSamples() {
-        let pick1 = Wager(name: "1,2,3,4,5")!
-        
-        let pick2 = Wager(name: "21,22,23,34,35")!
-        
-        let pick3 = Wager(name: "1,12,23,34,37")!
-        
-        wagers += [pick1, pick2, pick3]
-        
-        print(wagers)
 
     }
     
@@ -45,6 +45,7 @@ class WagerTableViewController: UITableViewController{
 
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //print(wagers.count)
         return wagers.count
     }
     

@@ -207,6 +207,10 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="MMP-IH-BUK"/>
                                     <barButtonItem tag="1" enabled="NO" title="Place Bet" style="done" id="wsS-En-f6r">
                                         <color key="tintColor" red="0.89019607840000003" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="wagerPick:" destination="KJt-MK-Cf1" id="B45-PO-a3Q"/>
+                                            <segue destination="rfR-Aj-Dom" kind="show" id="0UR-aC-1E5"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                                 <connections>
@@ -251,6 +255,7 @@
                     <connections>
                         <outlet property="pickToolbar" destination="IfK-jP-40K" id="ynk-Br-GGp"/>
                         <outlet property="resetButton" destination="rPD-qd-cMl" id="G37-9c-PoM"/>
+                        <outlet property="wagerButton" destination="wsS-En-f6r" id="GVJ-uB-Gfc"/>
                         <outletCollection property="collectionView" destination="SaS-o3-VEN" collectionClass="NSMutableArray" id="AhJ-1F-yt5"/>
                         <outletCollection property="collectionView" destination="cIL-pj-6S9" collectionClass="NSMutableArray" id="roc-fH-qvs"/>
                     </connections>
@@ -300,4 +305,7 @@
             <point key="canvasLocation" x="-1282.5" y="-215.5"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0UR-aC-1E5"/>
+    </inferredMetricsTieBreakers>
 </document>
