@@ -17,6 +17,7 @@ class Wager: NSObject, NSCoding {
     }
     
     var name: String
+    var date = NSDate()
     
     // MARK: Archive Paths
     

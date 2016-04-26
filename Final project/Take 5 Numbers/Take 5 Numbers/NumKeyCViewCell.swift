@@ -13,5 +13,4 @@ class NumKeyCViewCell: UICollectionViewCell {
     @IBOutlet weak var keyLabel: UILabel!
     
     @IBOutlet weak var pickLabel: UILabel!
-    
 }

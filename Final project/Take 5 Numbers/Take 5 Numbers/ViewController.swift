@@ -18,6 +18,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     @IBOutlet weak var wagerButton: UIBarButtonItem!
     
+    var dateSelected = NSDate()
+    
     @IBAction func wagerPick(sender: UIBarButtonItem) {
         
         print(numbersPicked)
@@ -27,7 +29,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let destinationViewController = segue.destinationViewController as? WagerTableViewController {
             print(numbersPicked)
-            destinationViewController.wagers.append(Wager(name: numbersPicked.description)!)
+            
+            let arrayStr = numbersPicked.map { "\($0)"}.joinWithSeparator(",")
+            var wager = Wager(name: arrayStr)!
+            wager.date = dateSelected
+            destinationViewController.wagers.append(wager)
         }
     }
     
@@ -47,8 +53,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     //constants related to wager instructions, in this case pick 5 #s out of 39
     //modify for lotto games with different number ranges (NY Pick 10 rules for ex., pick 10 out of 80)
-    let maxKeys:Int = 39
-    let maxPick:Int = 5
+    let maxKeys = 39
+    let maxPick = 5
     
     //colors
     let teal = UIColor(red: 0.0431, green: 0.5569, blue: 0.5333, alpha: 1.0)
@@ -56,7 +62,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     //declare 2 empty arrays for now. later, both arrays length will equal 'maxKeys' (39)
     //will hold all whole numbers between 1 and maxKeys (39) used to create the number picker grid
-    var keyArray: [Int] = []
+    var keyArray = [Int]()
     //will hold maxKeys (39) on/off switches that map to key array. defaults to all zeros
     var keyToggle: [Bool] = []
     
@@ -64,7 +70,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var numbersPicked: [Int] = []
     
     //holds number of how many numbers are selected, defaults with 0 and must not exceed maxPick (5)
-    var keysPressed: Int = 0
+    var keysPressed = 0
     
     //define arrays with loops
     required init?(coder aDecoder: NSCoder) {
@@ -226,7 +232,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 
                 //update variables related to numbers picked
                 keyToggle[indexPath.item] = true
-                keysPressed++
+                keysPressed += 1
                 
                 updateNumbersPicked()
             }
@@ -234,7 +240,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             //UNPICK NUMBER IF the cell was already selected
             else if keyToggle[indexPath.item] {
                 keyToggle[indexPath.item] = false
-                keysPressed--
+                keysPressed -= 1 //required for xcode 7.3
                 
                 updateNumbersPicked()
             }
