@@ -10,57 +10,69 @@ import UIKit
 
 class WagerTableViewController: UITableViewController{
 
+    
+    
     // MARK : Properties
     
-    var wagers = [Wager]()
-    let pick1 = Wager(name: "1, 2, 3, 4, 5")!
-    let pick2 = Wager(name: "21,22,23,34,35")!
-    let pick3 = Wager(name: "1,12,23,34,37")!
+   // var wagers = [Wager]()
     
     override func viewDidLoad(){
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = editButtonItem()
         
+        /*
         if wagers.count == 1{
-            wagers += [pick1, pick2, pick3]
         }
         
         if let savedWagers = loadWagers(){
 
             wagers += savedWagers
             
-        }else{
-            loadSamples()
+        }
+        else{
+            //let pick1 = Wager(name: "1, 2, 3, 4, 5")!
+            //let pick2 = Wager(name: "21,22,23,34,35")!
+            //wagers += [pick1, pick2]
         }
         
         saveWagers()
+        */
     }
-    
-    func loadSamples() {
 
-    }
     
+//BEGIN UICollectionViewDataSource protocol
+    
+    //Sections - default return is 1
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
-    
+    //Rows
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print(wagers.count)
-        return wagers.count
+        
+        //print(wagerLog.allWagers.count)
+        
+        return WagerLog.sharedInstance.allWagers.count
+        
     }
     
-    
+    //Cells
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // Table view cells are reused and should be dequeued using a cell identifier.
+        
+                
+        // Get the cell prototyped in the storyboard
         let cellIdentifier = "WagerTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! WagerTableViewCell
         
-        // Fetches the appropriate meal for the data source layout.
-        let wager = wagers[indexPath.row]
+        print(WagerLog.sharedInstance.allWagers)
         
-        cell.pickLabel.text = wager.name
+        // Fetches the appropriate wager for the data source layout
+        let wager = WagerLog.sharedInstance.allWagers[indexPath.row]
+        
+        cell.pickLabel?.text = wager.name
+
         
         return cell
     }
@@ -70,7 +82,7 @@ class WagerTableViewController: UITableViewController{
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            wagers.removeAtIndex(indexPath.row)
+            WagerLog.sharedInstance.allWagers.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -85,17 +97,12 @@ class WagerTableViewController: UITableViewController{
     // MARK: NSCoding
     
     func saveWagers(){
-        
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(wagers, toFile: Wager.ArchiveURL.path!)
-        
-        if !isSuccessfulSave {print("Error Saving")}
-        
+        WagerLog.sharedInstance.save()
     }
     
-    func loadWagers() -> [Wager]? {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(Wager.ArchiveURL.path!) as? [Wager]
+    func loadWagers() {
+        WagerLog.sharedInstance.load()
     }
-
     
     
 }

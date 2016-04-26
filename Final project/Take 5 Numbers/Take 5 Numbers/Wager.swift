@@ -10,44 +10,53 @@ import UIKit
 
 class Wager: NSObject, NSCoding {
     
-    // MARK: Properties
+// MARK: Properties
     
     struct PropertyKey {
         static let nameKey = "name"
+        static let dateKey = "dateK"
     }
     
     var name: String
-    var date = NSDate()
+    let dateK: NSDate?
     
-    // MARK: Archive Paths
+// MARK: Initialization
+    
+    init?(name: String, dateK: NSDate?) {
+        
+        // init stored properties
+        self.name = name
+        self.dateK = dateK
+        
+        super.init()
+    }
+    
+    override var description: String {
+        return "Name:\(name) - DateK: \(dateK ?? "")!"
+    }
+    
+// MARK: Archive Paths
     
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains:.UserDomainMask).first!
     
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("wagers")
     
-    // MARK: Initialization
-    
-    init?(name: String) {
-        // Initialize stored properties.
-        self.name = name
-        
-        super.init()
-        
-        // Initialization should fail if there is no name or if the rating is negative.
-        if name.isEmpty {return nil}
-    }
-    
-    // MARK: NSCoding
+// MARK: NSCoding
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(name, forKey: PropertyKey.nameKey)
+        aCoder.encodeObject(dateK, forKey: PropertyKey.dateKey)
     }
-    
+
     required convenience init?(coder aDecoder: NSCoder) {
         
         let name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
+        let dateK = aDecoder.decodeObjectForKey(PropertyKey.dateKey) as? NSDate
         
-        self.init(name: name)
+        self.init(name: name, dateK: dateK)
     }
     
-}
+    
+    
+    
+}//end class

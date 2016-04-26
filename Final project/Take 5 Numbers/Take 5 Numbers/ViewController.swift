@@ -18,23 +18,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     @IBOutlet weak var wagerButton: UIBarButtonItem!
     
-    var dateSelected = NSDate()
-    
     @IBAction func wagerPick(sender: UIBarButtonItem) {
         
         print(numbersPicked)
         
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let destinationViewController = segue.destinationViewController as? WagerTableViewController {
-            print(numbersPicked)
-            
-            let arrayStr = numbersPicked.map { "\($0)"}.joinWithSeparator(",")
-            var wager = Wager(name: arrayStr)!
-            wager.date = dateSelected
-            destinationViewController.wagers.append(wager)
-        }
     }
     
     @IBAction func resetPick(sender: UIBarButtonItem) {
@@ -45,6 +32,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         updateNumbersPicked()
     }
+    
     
     
     //constants for the UICollectionViewCell ReuseIdentifier, must match the value entered via IB
@@ -71,6 +59,30 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     //holds number of how many numbers are selected, defaults with 0 and must not exceed maxPick (5)
     var keysPressed = 0
+
+    //Date
+    var dateSelected = NSDate()
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let destinationViewController = segue.destinationViewController as? WagerTableViewController {
+            
+            //print(numbersPicked)
+            
+            let arrayStr = numbersPicked.map { "\($0)"}.joinWithSeparator(",")
+            //print(arraryStr)
+            
+            let dateBet = dateSelected
+            //print(dateSelected);
+            
+            let wager = Wager(name: arrayStr, dateK: dateBet)!
+            WagerLog.sharedInstance.add(wager)
+           // destinationViewController.wagers.append(wager)
+        }
+    }
+    
+
     
     //define arrays with loops
     required init?(coder aDecoder: NSCoder) {
