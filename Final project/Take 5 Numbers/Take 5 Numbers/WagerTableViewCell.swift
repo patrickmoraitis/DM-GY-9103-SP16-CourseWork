@@ -13,8 +13,9 @@ class WagerTableViewCell: UITableViewCell {
 
     // MARK: Properties
     
-    @IBOutlet weak var pickLabel: UILabel!
+    @IBOutlet weak var pick5Label: UILabel!
     
-    @IBOutlet weak var picView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    
 }
 

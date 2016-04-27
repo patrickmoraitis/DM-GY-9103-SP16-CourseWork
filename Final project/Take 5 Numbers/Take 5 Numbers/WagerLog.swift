@@ -9,9 +9,11 @@
 import UIKit
 
 class WagerLog {
-     static let sharedInstance = WagerLog()
+    
+    static let sharedInstance = WagerLog()
     
     var allWagers = [Wager]()
+    
     
     func createWager() -> Wager {
         
@@ -19,18 +21,12 @@ class WagerLog {
         
         allWagers.append(newWager!)
         
-        //print(newWager)
-        
         return newWager!
     }
     
     init(){
         load()
-        
-//        for _ in 0..<5 {
-//            createWager()
-//        }
-//        print(allWagers.count)
+        //for _ in 0..<5 {createWager()}
     }
     
     func add(wager: Wager) {
@@ -42,7 +38,6 @@ class WagerLog {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(allWagers, toFile: Wager.ArchiveURL.path!)
         
         if !isSuccessfulSave {print("Error Saving")}
-        
     }
     
     func load() {

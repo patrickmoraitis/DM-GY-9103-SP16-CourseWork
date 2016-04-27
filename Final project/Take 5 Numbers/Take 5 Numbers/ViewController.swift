@@ -13,8 +13,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet var collectionView: [UICollectionView]!
     
     @IBOutlet weak var pickToolbar: UIToolbar!
-
-    @IBOutlet weak var resetButton: UIBarButtonItem!
     
     @IBOutlet weak var wagerButton: UIBarButtonItem!
     
@@ -23,6 +21,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         print(numbersPicked)
         
     }
+    
+    @IBOutlet weak var resetButton: UIBarButtonItem!
     
     @IBAction func resetPick(sender: UIBarButtonItem) {
         
@@ -33,10 +33,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         updateNumbersPicked()
     }
     
-    
+
     
     //constants for the UICollectionViewCell ReuseIdentifier, must match the value entered via IB
-    let keyReuseID = "numKey"
+    let keyReuseID = "numKeyCell"
     let pickReuseID = "pickCell"
     
     //constants related to wager instructions, in this case pick 5 #s out of 39
@@ -51,6 +51,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     //declare 2 empty arrays for now. later, both arrays length will equal 'maxKeys' (39)
     //will hold all whole numbers between 1 and maxKeys (39) used to create the number picker grid
     var keyArray = [Int]()
+    
     //will hold maxKeys (39) on/off switches that map to key array. defaults to all zeros
     var keyToggle: [Bool] = []
     
@@ -63,12 +64,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     //Date
     var dateSelected = NSDate()
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if let destinationViewController = segue.destinationViewController as? WagerTableViewController {
-            
-            //print(numbersPicked)
+        //if let destinationViewController = segue.destinationViewController as? WagerTableViewController {}
             
             let arrayStr = numbersPicked.map { "\($0)"}.joinWithSeparator(",")
             //print(arraryStr)
@@ -79,7 +77,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             let wager = Wager(name: arrayStr, dateK: dateBet)!
             WagerLog.sharedInstance.add(wager)
            // destinationViewController.wagers.append(wager)
-        }
     }
     
 

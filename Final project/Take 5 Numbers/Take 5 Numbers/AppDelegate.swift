@@ -18,11 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        //Customizations added
-        
-        let navControl = window!.rootViewController as! UITabBarController
-       // let wagersController =  navControl.selectedViewController as! WagerTableViewController
-       // wagersController.wagerLog = wagerLog
+        //Customizations added, but removed for now
+            //let navControl = window!.rootViewController as! UITabBarController
+            //let wagersController =  navControl.selectedViewController as! WagerTableViewController
+            //wagersController.wagerLog = wagerLog
         
         return true
     }

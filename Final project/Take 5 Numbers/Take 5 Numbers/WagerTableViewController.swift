@@ -9,12 +9,10 @@
 import UIKit
 
 class WagerTableViewController: UITableViewController{
-
     
+//MARK : Properties
     
-    // MARK : Properties
-    
-   // var wagers = [Wager]()
+    //var wagers = [Wager]()
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -22,21 +20,20 @@ class WagerTableViewController: UITableViewController{
         navigationItem.rightBarButtonItem = editButtonItem()
         
         /*
+        
         if wagers.count == 1{
         }
         
         if let savedWagers = loadWagers(){
-
             wagers += savedWagers
-            
         }
         else{
             //let pick1 = Wager(name: "1, 2, 3, 4, 5")!
             //let pick2 = Wager(name: "21,22,23,34,35")!
             //wagers += [pick1, pick2]
         }
-        
         saveWagers()
+        
         */
     }
 
@@ -50,8 +47,8 @@ class WagerTableViewController: UITableViewController{
 
     //Rows
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print(wagers.count)
         
+        //print(wagers.count)
         //print(wagerLog.allWagers.count)
         
         return WagerLog.sharedInstance.allWagers.count
@@ -60,10 +57,9 @@ class WagerTableViewController: UITableViewController{
     
     //Cells
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
                 
         // Get the cell prototyped in the storyboard
-        let cellIdentifier = "WagerTableViewCell"
+        let cellIdentifier = "wagerTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! WagerTableViewCell
         
         print(WagerLog.sharedInstance.allWagers)
@@ -71,12 +67,11 @@ class WagerTableViewController: UITableViewController{
         // Fetches the appropriate wager for the data source layout
         let wager = WagerLog.sharedInstance.allWagers[indexPath.row]
         
-        cell.pickLabel?.text = wager.name
-
+        cell.pick5Label?.text = wager.name
+        cell.dateLabel?.text = wager.dateK?.description
         
         return cell
     }
-    
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
