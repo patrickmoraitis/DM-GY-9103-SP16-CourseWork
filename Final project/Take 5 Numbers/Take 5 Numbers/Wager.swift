@@ -15,25 +15,25 @@ class Wager: NSObject, NSCoding {
     struct PropertyKey {
         static let pickKey = "pickK"
         static let dateKey = "dateK"
+        static let nameKey = "nameK"
     }
     
-    var numbersPicked: [Int] = []
-    var name: String
+    var pickK: [Int] = []
     let dateK: NSDate?
+    var nameK: String
     
 // MARK: Initialization
     
-    init?(name: String, dateK: NSDate?) {
-        
+    init?(pickK: [Int]=[], dateK: NSDate?, nameK: String) {
         // init stored properties
-        self.name = name
+        self.pickK = pickK
         self.dateK = dateK
-        
+        self.nameK = nameK
         super.init()
     }
     
     override var description: String {
-        return "Name:\(name) - DateK: \(dateK ?? "")!"
+        return "Name:\(nameK) - DateK: \(dateK ?? "")!"
     }
     
 // MARK: Archive Paths
@@ -45,16 +45,19 @@ class Wager: NSObject, NSCoding {
 // MARK: NSCoding
     
     func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(name, forKey: PropertyKey.pickKey)
+        
+        aCoder.encodeObject(pickK, forKey: PropertyKey.pickKey)
         aCoder.encodeObject(dateK, forKey: PropertyKey.dateKey)
+        aCoder.encodeObject(nameK, forKey: PropertyKey.nameKey)
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
         
-        let name = aDecoder.decodeObjectForKey(PropertyKey.pickKey) as! String
+        let pickK = aDecoder.decodeObjectForKey(PropertyKey.pickKey) as? [Int]
         let dateK = aDecoder.decodeObjectForKey(PropertyKey.dateKey) as? NSDate
-        
-        self.init(name: name, dateK: dateK)
+        let nameK = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as? String
+        self.init(pickK: pickK!, dateK: dateK!, nameK: nameK!)
+    
     }
     
     

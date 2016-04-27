@@ -17,9 +17,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var wagerButton: UIBarButtonItem!
     
     @IBAction func wagerPick(sender: UIBarButtonItem) {
-        
         print(numbersPicked)
-        
     }
     
     @IBOutlet weak var resetButton: UIBarButtonItem!
@@ -66,14 +64,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         //if let destinationViewController = segue.destinationViewController as? WagerTableViewController {}
             
-            let arrayStr = numbersPicked.map { "\($0)"}.joinWithSeparator(",")
+            //let arrayStr = numbersPicked.map { "\($0)"}.joinWithSeparator(",")
             //print(arraryStr)
             
             let dateBet = dateSelected
             //print(dateSelected);
             
-            let wager = Wager(name: arrayStr, dateK: dateBet)!
-            WagerLog.sharedInstance.add(wager)
+            let wager = Wager(pickK: numbersPicked, dateK: dateBet, nameK: "cats")!
+            WagerStore.sharedInstance.add(wager)
     }
     
     //define arrays with loops

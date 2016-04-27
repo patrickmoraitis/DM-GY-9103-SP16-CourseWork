@@ -30,12 +30,9 @@ class WagerTableViewController: UITableViewController{
 
     //Rows
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         //print(wagers.count)
         //print(wagerLog.allWagers.count)
-        
-        return WagerLog.sharedInstance.allWagers.count
-        
+        return WagerStore.sharedInstance.allWagers.count
     }
     
     //Cells
@@ -45,13 +42,13 @@ class WagerTableViewController: UITableViewController{
         let cellIdentifier = "wagerTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! WagerTableViewCell
         
-        print(WagerLog.sharedInstance.allWagers)
+        print(WagerStore.sharedInstance.allWagers)
         
         // Fetches the appropriate wager for the data source layout
-        let wager = WagerLog.sharedInstance.allWagers[indexPath.row]
+        let wager = WagerStore.sharedInstance.allWagers[indexPath.row]
         
-        cell.pick5Label?.text = wager.name
-        cell.dateLabel?.text = wager.dateK?.description
+        cell.pick5Label.text = wager.pickK.description
+        cell.dateLabel?.text = wager.dateK.description
         
         return cell
     }
@@ -60,7 +57,7 @@ class WagerTableViewController: UITableViewController{
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            WagerLog.sharedInstance.allWagers.removeAtIndex(indexPath.row)
+            WagerStore.sharedInstance.allWagers.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -75,11 +72,11 @@ class WagerTableViewController: UITableViewController{
     // MARK: NSCoding
     
     func saveWagers(){
-        WagerLog.sharedInstance.save()
+        WagerStore.sharedInstance.save()
     }
     
     func loadWagers() {
-        WagerLog.sharedInstance.load()
+        WagerStore.sharedInstance.load()
     }
     
     

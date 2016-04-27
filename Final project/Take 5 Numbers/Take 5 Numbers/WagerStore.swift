@@ -1,5 +1,5 @@
 //
-//  WagerLog.swift
+//  WagerStore.swift
 //  Take 5 Numbers
 //
 //  Created by Patrick Moraitis on 4/26/16.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-class WagerLog {
+class WagerStore {
     
-    static let sharedInstance = WagerLog()
+    static let sharedInstance = WagerStore()
     
     var allWagers = [Wager]()
     
     
     func createWager() -> Wager {
         
-        let newWager = Wager(name: "Test", dateK: NSDate())
+        let newWager = Wager(pickK: [1,2], dateK: NSDate(), nameK: "cats")
         
         allWagers.append(newWager!)
         
