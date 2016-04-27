@@ -13,10 +13,11 @@ class Wager: NSObject, NSCoding {
 // MARK: Properties
     
     struct PropertyKey {
-        static let nameKey = "name"
+        static let pickKey = "pickK"
         static let dateKey = "dateK"
     }
     
+    var numbersPicked: [Int] = []
     var name: String
     let dateK: NSDate?
     
@@ -44,13 +45,13 @@ class Wager: NSObject, NSCoding {
 // MARK: NSCoding
     
     func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(name, forKey: PropertyKey.nameKey)
+        aCoder.encodeObject(name, forKey: PropertyKey.pickKey)
         aCoder.encodeObject(dateK, forKey: PropertyKey.dateKey)
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
         
-        let name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
+        let name = aDecoder.decodeObjectForKey(PropertyKey.pickKey) as! String
         let dateK = aDecoder.decodeObjectForKey(PropertyKey.dateKey) as? NSDate
         
         self.init(name: name, dateK: dateK)

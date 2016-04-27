@@ -18,23 +18,6 @@ class WagerTableViewController: UITableViewController{
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = editButtonItem()
-        
-        /*
-        
-        if wagers.count == 1{
-        }
-        
-        if let savedWagers = loadWagers(){
-            wagers += savedWagers
-        }
-        else{
-            //let pick1 = Wager(name: "1, 2, 3, 4, 5")!
-            //let pick2 = Wager(name: "21,22,23,34,35")!
-            //wagers += [pick1, pick2]
-        }
-        saveWagers()
-        
-        */
     }
 
     

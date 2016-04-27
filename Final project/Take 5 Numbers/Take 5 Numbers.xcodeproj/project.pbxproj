@@ -64,9 +64,9 @@
 		CDB7194B1CC71DE900BF112F /* Take 5 Numbers */ = {
 			isa = PBXGroup;
 			children = (
+				CDB719501CC71DE900BF112F /* Main.storyboard */,
 				CDB7194C1CC71DE900BF112F /* AppDelegate.swift */,
 				CDB7194E1CC71DE900BF112F /* ViewController.swift */,
-				CDB719501CC71DE900BF112F /* Main.storyboard */,
 				CDDAC6521CCD548200A0C6A9 /* WagerTableViewController.swift */,
 				CDDAC6541CCD5DFE00A0C6A9 /* Wager.swift */,
 				CD8946901CCF723F00133E6B /* WagerLog.swift */,

@@ -33,8 +33,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         updateNumbersPicked()
     }
     
-
-    
     //constants for the UICollectionViewCell ReuseIdentifier, must match the value entered via IB
     let keyReuseID = "numKeyCell"
     let pickReuseID = "pickCell"
@@ -76,16 +74,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             
             let wager = Wager(name: arrayStr, dateK: dateBet)!
             WagerLog.sharedInstance.add(wager)
-           // destinationViewController.wagers.append(wager)
     }
-    
-
     
     //define arrays with loops
     required init?(coder aDecoder: NSCoder) {
         
         for var i=1; i<=maxKeys; ++i {
-            keyArray.append(i)//should only be defined once, static array
+            keyArray.append(i)//should only be defined once
             keyToggle.append(false)
         }
         
@@ -221,8 +216,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         if collectionView.tag == maxKeys {
             
-            //
-                /*
+            /*
             print(collectionView.tag)
             print(indexPath.section)
             print(indexPath.row)
@@ -233,8 +227,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             print (keyArray.count)
             print(keysPressed)
             print("You picked #\(indexPath.item+1)!")
-            //
-                */
+            */
             
             //PICK NUMBER IF the cell selected is not picked and total numbers picked is 5 or less
             if !keyToggle[indexPath.item] && keysPressed < maxPick {
