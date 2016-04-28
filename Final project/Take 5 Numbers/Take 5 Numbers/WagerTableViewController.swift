@@ -42,13 +42,16 @@ class WagerTableViewController: UITableViewController{
         let cellIdentifier = "wagerTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! WagerTableViewCell
         
-        print(WagerStore.sharedInstance.allWagers)
+        //print(WagerStore.sharedInstance.allWagers)
         
         // Fetches the appropriate wager for the data source layout
         let wager = WagerStore.sharedInstance.allWagers[indexPath.row]
         
-        cell.pick5Label.text = wager.pickK.description
-        cell.dateLabel?.text = wager.dateK.description
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        
+        cell.pick5Label.text = wager.pickK.map{ "\($0)"}.joinWithSeparator(", ")
+        cell.dateLabel?.text = formatter.stringFromDate(wager.dateK)
         
         return cell
     }
@@ -56,10 +59,14 @@ class WagerTableViewController: UITableViewController{
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
-            WagerStore.sharedInstance.allWagers.removeAtIndex(indexPath.row)
+            
+            // Delete the row from the view and the data archive
+            WagerStore.sharedInstance.removeWagerAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
+
+            //WagerStore.sharedInstance.allWagers.removeAtIndex(indexPath.row)
+        }
+        else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }

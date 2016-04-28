@@ -83,9 +83,9 @@
                             <outlet property="delegate" destination="rfR-Aj-Dom" id="hf1-ef-oKV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="r7u-Oe-DRK">
+                    <navigationItem key="navigationItem" id="r7u-Oe-DRK" userLabel="Filter by ROI">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" highlighted="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="0v8-Ki-gmI">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" highlighted="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" id="0v8-Ki-gmI">
                             <rect key="frame" x="90.5" y="7" width="194" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
@@ -278,7 +278,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Take 5 Numbers" id="51f-dw-VH1">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="aUf-oW-CmW">
+                        <barButtonItem key="rightBarButtonItem" id="aUf-oW-CmW">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="eCA-Tv-uZk">
                                 <rect key="frame" x="337" y="11" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

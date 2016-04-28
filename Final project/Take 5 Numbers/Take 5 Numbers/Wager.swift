@@ -5,7 +5,8 @@
 //  Created by Patrick Moraitis on 4/24/16.
 //  Copyright © 2016 Patrick Moraitis. All rights reserved.
 //
-
+////https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html
+//
 import UIKit
 
 class Wager: NSObject, NSCoding {
@@ -18,13 +19,13 @@ class Wager: NSObject, NSCoding {
         static let nameKey = "nameK"
     }
     
-    var pickK: [Int] = []
-    let dateK: NSDate?
-    var nameK: String
+    var pickK: [Int]! = []
+    let dateK: NSDate!
+    var nameK: String?
     
 // MARK: Initialization
     
-    init?(pickK: [Int]=[], dateK: NSDate?, nameK: String) {
+    init?(pickK: [Int]=[], dateK: NSDate, nameK: String) {
         // init stored properties
         self.pickK = pickK
         self.dateK = dateK
@@ -33,7 +34,7 @@ class Wager: NSObject, NSCoding {
     }
     
     override var description: String {
-        return "Name:\(nameK) - DateK: \(dateK ?? "")!"
+        return "Pick:\(pickK) - Date: \(dateK ?? "")!"
     }
     
 // MARK: Archive Paths
@@ -53,10 +54,10 @@ class Wager: NSObject, NSCoding {
 
     required convenience init?(coder aDecoder: NSCoder) {
         
-        let pickK = aDecoder.decodeObjectForKey(PropertyKey.pickKey) as? [Int]
-        let dateK = aDecoder.decodeObjectForKey(PropertyKey.dateKey) as? NSDate
-        let nameK = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as? String
-        self.init(pickK: pickK!, dateK: dateK!, nameK: nameK!)
+        let pickK = aDecoder.decodeObjectForKey(PropertyKey.pickKey) as! [Int]
+        let dateK = aDecoder.decodeObjectForKey(PropertyKey.dateKey) as! NSDate
+        let nameK = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
+        self.init(pickK: pickK, dateK: dateK, nameK: nameK)
     
     }
     

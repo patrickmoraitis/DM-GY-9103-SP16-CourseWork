@@ -14,36 +14,54 @@ class WagerStore {
     
     var allWagers = [Wager]()
     
-    
-    func createWager() -> Wager {
-        
-        let newWager = Wager(pickK: [1,2], dateK: NSDate(), nameK: "cats")
-        
-        allWagers.append(newWager!)
-        
-        return newWager!
-    }
-    
     init(){
         load()
-        //for _ in 0..<5 {createWager()}
-    }
-    
-    func add(wager: Wager) {
-        allWagers.append(wager)
-    }
-    
-    func save() {
-        
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(allWagers, toFile: Wager.ArchiveURL.path!)
-        
-        if !isSuccessfulSave {print("Error Saving")}
     }
     
     func load() {
         if let storedWagers = NSKeyedUnarchiver.unarchiveObjectWithFile(Wager.ArchiveURL.path!) as? [Wager] {
             allWagers = storedWagers
+            print("data loaded")
+        }
+        else{
+            for _ in 0..<2 {createWager()}
+            print("Error loading saved data, sample data returned instead")
         }
     }
+    
+    func createWager() -> Wager {
+        
+        let newWager = Wager(pickK: [1,2,3,4,5], dateK: NSDate(), nameK: "cats")
+        
+        allWagers.append(newWager!)
+        
+        //print(newWager)
+        print("created sample wager")
+        return newWager!
+    }
+    
+    func addWager(wager: Wager) {
+        allWagers.append(wager)
+        print("added wager")
+        
+        save()
+    }
+    
+    func removeWagerAtIndex(i: Int) {
+        allWagers.removeAtIndex(0)
+        save()
+        
+        //print(allWagers)
+        print("removed wager")
+
+    }
+    
+    func save() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(allWagers, toFile: Wager.ArchiveURL.path!)
+        if !isSuccessfulSave {print("Error Saving")}
+        else{print("data saved")}
+    }
+    
+
     
 }//end class

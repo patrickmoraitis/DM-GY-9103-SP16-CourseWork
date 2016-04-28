@@ -58,20 +58,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var keysPressed = 0
 
     //Date
-    var dateSelected = NSDate()
+    //var dateSelected = NSDate()
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         //if let destinationViewController = segue.destinationViewController as? WagerTableViewController {}
             
-            //let arrayStr = numbersPicked.map { "\($0)"}.joinWithSeparator(",")
-            //print(arraryStr)
-            
-            let dateBet = dateSelected
+            //let dateBet = dateSelected
             //print(dateSelected);
             
-            let wager = Wager(pickK: numbersPicked, dateK: dateBet, nameK: "cats")!
-            WagerStore.sharedInstance.add(wager)
+            let wager = Wager(pickK: numbersPicked, dateK: NSDate(), nameK: "cats")!
+            WagerStore.sharedInstance.addWager(wager)
     }
     
     //define arrays with loops
