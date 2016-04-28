@@ -20,8 +20,15 @@ class WagerStore {
     
     func load() {
         if let storedWagers = NSKeyedUnarchiver.unarchiveObjectWithFile(Wager.ArchiveURL.path!) as? [Wager] {
-            allWagers = storedWagers
-            print("data loaded")
+            
+            if storedWagers.count > 0 {
+                allWagers = storedWagers
+                print("data loaded")
+            }
+            else{
+                for _ in 0..<2 {createWager()}
+                print("data loaded is an empty array")
+            }
         }
         else{
             for _ in 0..<2 {createWager()}
@@ -32,11 +39,12 @@ class WagerStore {
     func createWager() -> Wager {
         
         let newWager = Wager(pickK: [1,2,3,4,5], dateK: NSDate(), nameK: "cats")
-        
-        allWagers.append(newWager!)
+        print("created sample wager")
+
+        //allWagers.append(newWager!)
+        addWager(newWager!)
         
         //print(newWager)
-        print("created sample wager")
         return newWager!
     }
     
