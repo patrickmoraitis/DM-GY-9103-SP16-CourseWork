@@ -31,6 +31,30 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         updateNumbersPicked()
     }
     
+    @IBOutlet weak var quickpickButton: UIBarButtonItem!
+    
+    @IBAction func quickPick(sender: UIBarButtonItem){
+        
+        keyToggle = []
+        keysPressed = 0
+        for var i=1; i<=maxKeys; ++i {keyToggle.append(false)}
+        
+        while keysPressed < 5 {
+            
+            let r = Int(arc4random_uniform(UInt32(maxKeys)))
+            
+            if !keyToggle[r] {
+                keyToggle[r] = true
+                keysPressed++
+            }
+        }
+
+        print(keyToggle)
+        
+        updateNumbersPicked()
+        
+    }
+    
     //constants for the UICollectionViewCell ReuseIdentifier, must match the value entered via IB
     let keyReuseID = "numKeyCell"
     let pickReuseID = "pickCell"
