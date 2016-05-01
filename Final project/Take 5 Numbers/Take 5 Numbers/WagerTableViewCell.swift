@@ -16,6 +16,8 @@ class WagerTableViewCell: UITableViewCell {
     @IBOutlet weak var pick5Label: UILabel!
     
     @IBOutlet weak var dateLabel: UILabel!
-    
+
+    @IBOutlet weak var winlossLabel: UILabel!
+
 }
 

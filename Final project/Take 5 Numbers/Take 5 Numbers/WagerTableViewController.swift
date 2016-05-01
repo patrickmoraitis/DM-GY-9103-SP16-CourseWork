@@ -44,15 +44,19 @@ class WagerTableViewController: UITableViewController{
         
         //print(WagerStore.sharedInstance.allWagers)
         
-        // Fetches the appropriate wager for the data source layout in reversed order
+        // Fetches the entire wager store for the data source
         let allWagers = WagerStore.sharedInstance.allWagers
+        // select from the array a single data based on indexPath
+        // uses count - 1 - indexPath to reverse order
         let wager = allWagers[allWagers.count - 1 - indexPath.row]
         
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         
+        //Adds pick & date picked to the cell labels
         cell.pick5Label.text = wager.pickK.map{ "\($0)"}.joinWithSeparator(", ")
-        cell.dateLabel?.text = formatter.stringFromDate(wager.dateK)
+        cell.dateLabel.text = formatter.stringFromDate(wager.dateK)
+        cell.winlossLabel.text = "-$1"
         
         return cell
     }
