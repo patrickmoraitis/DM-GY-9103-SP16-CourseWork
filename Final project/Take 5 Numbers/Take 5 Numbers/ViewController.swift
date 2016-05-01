@@ -49,7 +49,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             }
         }
 
-        print(keyToggle)
+        //print(keyToggle)
         
         updateNumbersPicked()
         
@@ -114,8 +114,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         //print(keyArray);print(keyToggle)
         
         super.init(coder: aDecoder)
+                
     }
-    
     
 //BEGIN UICollectionViewDataSource protocol - https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionViewDataSource_protocol/
     

@@ -44,8 +44,9 @@ class WagerTableViewController: UITableViewController{
         
         //print(WagerStore.sharedInstance.allWagers)
         
-        // Fetches the appropriate wager for the data source layout
-        let wager = WagerStore.sharedInstance.allWagers[indexPath.row]
+        // Fetches the appropriate wager for the data source layout in reversed order
+        let allWagers = WagerStore.sharedInstance.allWagers
+        let wager = allWagers[allWagers.count - 1 - indexPath.row]
         
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle

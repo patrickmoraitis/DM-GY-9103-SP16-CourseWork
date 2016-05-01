@@ -133,7 +133,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SaS-o3-VEN" userLabel="Pick Collection View">
-                                <rect key="frame" x="0.0" y="64" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="254" width="375" height="80"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="gED-Sm-8vz"/>
@@ -270,7 +270,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="IfK-jP-40K" secondAttribute="trailing" id="1fP-EE-ZyU"/>
-                            <constraint firstItem="SaS-o3-VEN" firstAttribute="top" secondItem="Rsm-5K-Lyf" secondAttribute="bottom" id="73u-Ql-8Jn"/>
+                            <constraint firstItem="IfK-jP-40K" firstAttribute="top" secondItem="SaS-o3-VEN" secondAttribute="bottom" id="8sO-na-NPT"/>
                             <constraint firstItem="cIL-pj-6S9" firstAttribute="top" secondItem="IfK-jP-40K" secondAttribute="bottom" id="90z-g2-gdL"/>
                             <constraint firstAttribute="trailing" secondItem="SaS-o3-VEN" secondAttribute="trailing" id="EgM-7i-heg"/>
                             <constraint firstItem="cIL-pj-6S9" firstAttribute="top" secondItem="IfK-jP-40K" secondAttribute="bottom" id="Rsk-yV-KeA"/>
