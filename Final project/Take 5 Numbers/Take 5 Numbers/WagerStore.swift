@@ -23,11 +23,11 @@ class WagerStore {
             
             if storedWagers.count > 0 {
                 allWagers = storedWagers
-                print("data loaded")
+                //print("data loaded")
             }
             else{
                 for _ in 0..<2 {createWager()}
-                print("data loaded is an empty array")
+                //print("data loaded is an empty array")
             }
         }
         else{
@@ -39,7 +39,7 @@ class WagerStore {
     func createWager() -> Wager {
         
         let newWager = Wager(pickK: [1,2,3,4,5], dateK: NSDate(), nameK: "cats")
-        print("created sample wager")
+        //print("created sample wager")
 
         //allWagers.append(newWager!)
         addWager(newWager!)
@@ -50,24 +50,30 @@ class WagerStore {
     
     func addWager(wager: Wager) {
         allWagers.append(wager)
-        print("added wager")
+        //print("added wager")
         
         save()
     }
     
     func removeWagerAtIndex(i: Int) {
-        allWagers.removeAtIndex(0)
-        save()
+        allWagers.removeAtIndex((allWagers.count - 1) - i)
         
+        save()
+         
         //print(allWagers)
-        print("removed wager")
+        //print("removed wager")
 
     }
     
     func save() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(allWagers, toFile: Wager.ArchiveURL.path!)
-        if !isSuccessfulSave {print("Error Saving")}
-        else{print("data saved")}
+        
+        if !isSuccessfulSave {
+            print("Error Saving")
+        }
+        else{
+            //print("data saved")
+        }
     }
     
 

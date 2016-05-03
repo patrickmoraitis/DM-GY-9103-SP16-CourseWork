@@ -25,7 +25,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic2" translatesAutoresizingMaskIntoConstraints="NO" id="LAJ-KG-qwd">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic4" translatesAutoresizingMaskIntoConstraints="NO" id="LAJ-KG-qwd">
                                             <rect key="frame" x="10" y="10" width="60" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="KEc-2W-uQB"/>
@@ -317,11 +317,6 @@
                                     <outlet property="delegate" destination="KJt-MK-Cf1" id="tJx-8m-teI"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick 5 Numbers or Get Random Pick" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMk-xA-mzb">
-                                <rect key="frame" x="0.0" y="0.0" width="310.5" height="21.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfK-jP-40K">
                                 <rect key="frame" x="0.0" y="334" width="375" height="44"/>
                                 <items>
@@ -384,9 +379,21 @@
                                     <constraint firstAttribute="height" constant="44" id="l9U-ak-ytj"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winning number for this date will be drawn tonight. Get your bets in now!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwF-Nw-qM6" userLabel="winning number">
+                                <rect key="frame" x="0.0" y="116" width="375" height="130"/>
+                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="UUU-Hi-JTW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="rwF-Nw-qM6" firstAttribute="top" secondItem="SU0-VX-RAB" secondAttribute="bottom" constant="8" id="11h-ff-GQ0"/>
                             <constraint firstAttribute="trailing" secondItem="IfK-jP-40K" secondAttribute="trailing" id="1fP-EE-ZyU"/>
                             <constraint firstAttribute="trailing" secondItem="SU0-VX-RAB" secondAttribute="trailing" id="5DA-Ch-TRq"/>
                             <constraint firstItem="IfK-jP-40K" firstAttribute="top" secondItem="SaS-o3-VEN" secondAttribute="bottom" id="8sO-na-NPT"/>
@@ -396,10 +403,12 @@
                             <constraint firstItem="cIL-pj-6S9" firstAttribute="top" secondItem="IfK-jP-40K" secondAttribute="bottom" id="Rsk-yV-KeA"/>
                             <constraint firstItem="SU0-VX-RAB" firstAttribute="leading" secondItem="UPi-zl-xgA" secondAttribute="leading" id="TcM-Wr-CXC"/>
                             <constraint firstItem="cIL-pj-6S9" firstAttribute="leading" secondItem="UPi-zl-xgA" secondAttribute="leading" id="aRe-Na-qdH"/>
+                            <constraint firstItem="rwF-Nw-qM6" firstAttribute="trailing" secondItem="SU0-VX-RAB" secondAttribute="trailing" id="cBQ-di-s0w"/>
                             <constraint firstItem="SaS-o3-VEN" firstAttribute="leading" secondItem="UPi-zl-xgA" secondAttribute="leading" id="dpn-SB-GSl"/>
                             <constraint firstItem="zOh-Zy-faV" firstAttribute="leading" secondItem="UPi-zl-xgA" secondAttribute="leading" id="eMX-Lm-bFQ"/>
                             <constraint firstAttribute="trailing" secondItem="cIL-pj-6S9" secondAttribute="trailing" id="ilw-zg-f5v"/>
                             <constraint firstItem="XBd-Pp-mGu" firstAttribute="top" secondItem="cIL-pj-6S9" secondAttribute="bottom" id="jfJ-Kb-6pt"/>
+                            <constraint firstItem="rwF-Nw-qM6" firstAttribute="leading" secondItem="SU0-VX-RAB" secondAttribute="leading" id="n7x-k7-gFS"/>
                             <constraint firstItem="XBd-Pp-mGu" firstAttribute="top" secondItem="zOh-Zy-faV" secondAttribute="bottom" id="ovW-ZP-Cc1"/>
                             <constraint firstItem="IfK-jP-40K" firstAttribute="leading" secondItem="UPi-zl-xgA" secondAttribute="leading" id="rE3-uB-sc0"/>
                             <constraint firstAttribute="trailing" secondItem="zOh-Zy-faV" secondAttribute="trailing" id="ybt-rC-2W4"/>
@@ -420,13 +429,14 @@
                         <outlet property="quickpickButton" destination="Tf3-tO-bBk" id="Aw3-yw-9qv"/>
                         <outlet property="resetButton" destination="rPD-qd-cMl" id="G37-9c-PoM"/>
                         <outlet property="wagerButton" destination="wsS-En-f6r" id="GVJ-uB-Gfc"/>
+                        <outlet property="winningNumber" destination="rwF-Nw-qM6" id="VVA-9y-nuL"/>
                         <outletCollection property="collectionView" destination="SaS-o3-VEN" collectionClass="NSMutableArray" id="AhJ-1F-yt5"/>
                         <outletCollection property="collectionView" destination="cIL-pj-6S9" collectionClass="NSMutableArray" id="roc-fH-qvs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZYb-6i-2HB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-29.5" y="-634.5"/>
+            <point key="canvasLocation" x="-6.5" y="-652.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z5v-de-C0s">
@@ -467,6 +477,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pic2" width="250" height="250"/>
+        <image name="pic4" width="256" height="256"/>
     </resources>
 </document>

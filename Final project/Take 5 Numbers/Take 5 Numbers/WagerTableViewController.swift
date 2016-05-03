@@ -18,6 +18,12 @@ class WagerTableViewController: UITableViewController{
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = editButtonItem()
     }
+    
+    //Reload the table data everytime it appears
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidLoad()
+        tableView.reloadData()
+    }
 
     
 //BEGIN UICollectionViewDataSource protocol
@@ -70,19 +76,20 @@ class WagerTableViewController: UITableViewController{
         if editingStyle == .Delete {
             
             // Delete the row from the view and the data archive
+            
+            
             WagerStore.sharedInstance.removeWagerAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-
             //WagerStore.sharedInstance.allWagers.removeAtIndex(indexPath.row)
+            
+            saveWagers()
         }
         else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+
         }
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        
-       // tableView.cellForRowAtIndexPath(indexPath)?.backgroundColor = UIColor.purpleColor()
         
         return true
     }

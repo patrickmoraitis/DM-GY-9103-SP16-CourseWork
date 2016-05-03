@@ -12,6 +12,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     @IBOutlet var collectionView: [UICollectionView]!
     
+    @IBOutlet var winningNumber: UILabel!
+    
     @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var pickToolbar: UIToolbar!
@@ -159,6 +161,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             dateLabel.text = "Today is " + longStringFromDateFormat(dateSelected)
             openBet = true
         }
+        
+        fetchWinningNumbers()
         
         datePickedButton.removeFromSuperview()
         shadowView.removeFromSuperview()
@@ -434,6 +438,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     }
     
+    // 3 functions used for converting NSDate to String and vice versa in the right format
+    
     func stringFromDateFormat(nsdate: NSDate) -> String {
         //the date format found in the data.ny.gov Take5 database
         dataNYdateFormat.dateFormat = "MM/dd/yyyy"
@@ -455,6 +461,37 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return dataNYdateFormat.dateFromString(string)!
     }
 
+    func fetchWinningNumbers() {
+        
+        print("fetch")
+        
+        //this format is required to query the API by draw_date
+        dataNYdateFormat.dateFormat = "yyyy-MM-dd"
+        
+        let qByDrawDateURL = "https://data.ny.gov/resource/hh4x-xmbw.json?draw_date="
+        
+        if let url = NSURL(string: qByDrawDateURL + "\(dataNYdateFormat.stringFromDate(dateSelected))"),
+            let data = NSData(contentsOfURL: url) {
+        
+            do
+            {
+                let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                
+                //print(jsonData)
+                //print((jsonData.firstObject as! [String:String])["winning_numbers"]!)
+                
+                let numDrawn = (jsonData.firstObject as! [String:String])["winning_numbers"]!
+                
+                winningNumber.text = "The winning number for this date is \n\n \(numDrawn)"
+            }
+                
+            catch (let error as NSError) {
+                print("Error: \(error)!")
+                return
+            }
+        }
+        
+    }
     
 }//close class
 
