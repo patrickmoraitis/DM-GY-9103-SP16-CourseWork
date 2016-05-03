@@ -106,10 +106,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         //add date picker to the view, on top of the shadow view
         view.addSubview(datePickerView)
         
-        
+        //create and add custom button with Done label
         datePickedButton = UIButton(type: .Custom)
         datePickedButton.setTitle("Done", forState: .Normal)
-        datePickedButton.frame = CGRectMake(datePickerView.center.x - 30, CGRectGetMaxY(datePickerView.frame) + 20, 60, 30)
+        datePickedButton.frame = CGRectMake(datePickerView.center.x - 50, CGRectGetMaxY(datePickerView.frame) + 25, 100, 40)
+        datePickedButton.titleLabel?.font = UIFont.boldSystemFontOfSize(36)
+        
+        //set action to the button
         datePickedButton.addTarget(self, action:Selector("datePicked"), forControlEvents: .TouchUpInside)
         view.addSubview(datePickedButton)
         
@@ -122,14 +125,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let dateStr = stringFromDateFormat(dateSelected)
         let todayStr = stringFromDateFormat(todaysDate)
         
-        if(dateStr < todayStr){
-            dateLabel.text = "Past date: " + longStringFromDateFormat(dateSelected)
         }
-        else if(dateStr > todayStr){
-            dateLabel.text = "Future date: " + longStringFromDateFormat(dateSelected)
         }
-        else if(dateStr == todayStr){
-            dateLabel.text = "Today's date: " + longStringFromDateFormat(dateSelected)
         }
         
         datePickedButton.removeFromSuperview()
@@ -138,29 +135,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
 //END CITE - Thanks again JG!
-    
-    func stringFromDateFormat(nsdate: NSDate) -> String {
-        //the date format found in the data.ny.gov Take5 database
-        dataNYdateFormat.dateFormat = "MM/dd/yyyy"
-        
-        return dataNYdateFormat.stringFromDate(nsdate)
-    }
-    
-    func longStringFromDateFormat(nsdate: NSDate) -> String {
-        //the date format found in the data.ny.gov Take5 database
-        dataNYdateFormat.dateStyle = NSDateFormatterStyle.LongStyle
-        
-        return dataNYdateFormat.stringFromDate(nsdate)
-    }
-    
-    func dateFromStringFormat(string: String) -> NSDate {
-        //the date format found in the data.ny.gov Take5 database
-        dataNYdateFormat.dateFormat = "MM/dd/yyyy"
-        
-        return dataNYdateFormat.dateFromString(string)!
-    }
-    
-
     
     //the date format found in the data.ny.gov Take5 database
     let dataNYdateFormat = NSDateFormatter()
@@ -198,25 +172,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var dateSelected = NSDate()
     let todaysDate = NSDate()
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        //if let destinationViewController = segue.destinationViewController as? WagerTableViewController {}
-            
-            //let dateBet = dateSelected
-            //print(dateSelected);
-            
-            let wager = Wager(pickK: numbersPicked, dateK: dateSelected, nameK: "more cats")!
-            WagerStore.sharedInstance.addWager(wager)
-    }
-    
     override func viewDidLoad() {
         
         //default date label is todays date
         dataNYdateFormat.dateStyle = NSDateFormatterStyle.LongStyle
         //dataNYdateFormat.dateFormat = "MM/dd/yyyy"
-
-        dateLabel.text = "Today is: " + dataNYdateFormat.stringFromDate(dateSelected)
-
         
         //define arrays with for loops
         for var i=1; i<=maxKeys; ++i {
@@ -428,6 +388,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             collectionView.reloadData()
         }
 
+    }
+    
+        //the date format found in the data.ny.gov Take5 database
+        
+        return dataNYdateFormat.stringFromDate(nsdate)
+    }
+    
+        //the date format found in the data.ny.gov Take5 database
+        
     }
 
     
