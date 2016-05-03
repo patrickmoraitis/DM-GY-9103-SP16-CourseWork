@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Take 5 Numbers/ViewController.swift"
-            timestampString = "483656940.088226"
+            timestampString = "483958942.465699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "collectionView(_:numberOfItemsInSection:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Take 5 Numbers/ViewController.swift"
-            timestampString = "483656940.088226"
+            timestampString = "483958942.465699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "ViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Take 5 Numbers/ViewController.swift"
-            timestampString = "483656940.088226"
+            timestampString = "483958942.465699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Take 5 Numbers/ViewController.swift"
-            timestampString = "483656940.088226"
+            timestampString = "483958942.465699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Take 5 Numbers/ViewController.swift"
-            timestampString = "483656940.088226"
+            timestampString = "483958942.465699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Take 5 Numbers/ViewController.swift"
-            timestampString = "483656940.088226"
+            timestampString = "483958942.465699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "init(coder:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Take 5 Numbers/WagerTableViewController.swift"
-            timestampString = "483816364.720677"
+            timestampString = "483948503.621832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Take 5 Numbers/WagerTableViewController.swift"
-            timestampString = "483816364.720677"
+            timestampString = "483948503.621832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "tableView(_:commitEditingStyle:forRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Take 5 Numbers/ViewController.swift"
-            timestampString = "483516119.34217"
+            timestampString = "483958649.619069"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
             landmarkName = "ViewController"
             landmarkType = "3">
             <Locations>
@@ -297,11 +297,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Take 5 Numbers/ViewController.swift"
-            timestampString = "483656940.088226"
+            timestampString = "483958942.465699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -668,15 +668,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Take 5 Numbers/ViewController.swift"
-            timestampString = "483656940.088226"
+            timestampString = "483958942.465699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "init(coder:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -688,11 +688,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Take 5 Numbers/ViewController.swift"
-            timestampString = "483656940.088226"
+            timestampString = "483958942.465699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "init(coder:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -704,11 +704,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Take 5 Numbers/ViewController.swift"
-            timestampString = "483516835.907935"
+            timestampString = "483872503.000516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "wagerPick(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -736,7 +736,7 @@
                   moduleName = "Take 5 Numbers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Patrick/Desktop/iOS16/DM-GY-9103-SP16-CourseWork/Final%20project/Take%205%20Numbers/Take%205%20Numbers/WagerStore.swift"
-                  timestampString = "483656989.156891"
+                  timestampString = "483915633.867536"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -751,7 +751,7 @@
                   moduleName = "Take 5 Numbers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Patrick/Desktop/iOS16/DM-GY-9103-SP16-CourseWork/Final%20project/Take%205%20Numbers/Take%205%20Numbers/WagerStore.swift"
-                  timestampString = "483656989.157047"
+                  timestampString = "483915633.86781"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -766,7 +766,7 @@
                   moduleName = "Take 5 Numbers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Patrick/Desktop/iOS16/DM-GY-9103-SP16-CourseWork/Final%20project/Take%205%20Numbers/Take%205%20Numbers/WagerStore.swift"
-                  timestampString = "483656989.157187"
+                  timestampString = "483915633.867949"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -781,7 +781,7 @@
                   moduleName = "Take 5 Numbers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Patrick/Desktop/iOS16/DM-GY-9103-SP16-CourseWork/Final%20project/Take%205%20Numbers/Take%205%20Numbers/WagerStore.swift"
-                  timestampString = "483656989.157315"
+                  timestampString = "483915633.86809"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -798,13 +798,106 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Take 5 Numbers/ViewController.swift"
-            timestampString = "483656989.11264"
+            timestampString = "483872503.000516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "quickPick(_:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Take 5 Numbers/WagerTableViewCell.swift"
+            timestampString = "483872888.899165"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "WagerTableViewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Take_5_Numbers.WagerTableViewCell.pick5Label.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Take 5 Numbers"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Patrick/Desktop/iOS16/DM-GY-9103-SP16-CourseWork/Final%20project/Take%205%20Numbers/Take%205%20Numbers/WagerTableViewCell.swift"
+                  timestampString = "483915633.870714"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Take_5_Numbers.WagerTableViewCell.pick5Label.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Take 5 Numbers"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Patrick/Desktop/iOS16/DM-GY-9103-SP16-CourseWork/Final%20project/Take%205%20Numbers/Take%205%20Numbers/WagerTableViewCell.swift"
+                  timestampString = "483915633.870871"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Take_5_Numbers.WagerTableViewCell.pick5Label.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Take 5 Numbers"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Patrick/Desktop/iOS16/DM-GY-9103-SP16-CourseWork/Final%20project/Take%205%20Numbers/Take%205%20Numbers/WagerTableViewCell.swift"
+                  timestampString = "483915633.870995"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Take_5_Numbers.WagerTableViewCell.init (Take_5_Numbers.WagerTableViewCell.Type)(style : __C.UITableViewCellStyle, reuseIdentifier : Swift.Optional&lt;Swift.String&gt;) -&gt; Take_5_Numbers.WagerTableViewCell"
+                  moduleName = "Take 5 Numbers"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Patrick/Desktop/iOS16/DM-GY-9103-SP16-CourseWork/Final%20project/Take%205%20Numbers/Take%205%20Numbers/WagerTableViewCell.swift"
+                  timestampString = "483915633.871126"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "70">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Take_5_Numbers.WagerTableViewCell.init (Take_5_Numbers.WagerTableViewCell.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Take_5_Numbers.WagerTableViewCell&gt;"
+                  moduleName = "Take 5 Numbers"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Patrick/Desktop/iOS16/DM-GY-9103-SP16-CourseWork/Final%20project/Take%205%20Numbers/Take%205%20Numbers/WagerTableViewCell.swift"
+                  timestampString = "483915633.871244"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

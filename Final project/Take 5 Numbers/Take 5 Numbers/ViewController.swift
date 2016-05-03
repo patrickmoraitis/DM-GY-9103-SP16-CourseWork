@@ -12,12 +12,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     @IBOutlet var collectionView: [UICollectionView]!
     
+    @IBOutlet weak var dateLabel: UILabel!
+    
     @IBOutlet weak var pickToolbar: UIToolbar!
     
     @IBOutlet weak var wagerButton: UIBarButtonItem!
     
     @IBAction func wagerPick(sender: UIBarButtonItem) {
-        print(numbersPicked)
+        //print(numbersPicked)
+        //controlled by segue
     }
     
     @IBOutlet weak var resetButton: UIBarButtonItem!
@@ -55,6 +58,74 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     
+//CITE//Major thanks to my coworker and friend JG for helping me with this pop up date picker!
+    
+    //programmatically creates 1 views, one date picker, and a button
+    
+    //shadowView is a full frame UIView with a slightly transparent black color over the main UI
+    //works similar to UIAlert pop ups, effectively disabling all buttons until user completes a specific prompt
+    var shadowView: UIView!
+    //datePickerView contains the UIDatePicker input window
+    var datePickerView: UIDatePicker!
+    //this button closes the date picker alert window and passed the data selected
+    var datePickedButton: UIButton!
+    
+    //This button is found on the storyboard, upper right corner of the main page
+    @IBOutlet weak var changeDateButton: UIButton!
+    
+    //Clicking the change date buttons opens the date picker pop up by adding 3 items to the view)
+    @IBAction func showDatePicker(sender: AnyObject) {
+        
+        //set the view size to the same size as the main view, in this case it's practically full screen
+        shadowView = UIView(frame: view.frame)
+        //add a black color with 80% to make the main UI barely visible. Adds contrast to date picker, making it a stronger call to action
+        shadowView.backgroundColor = UIColor.blackColor()
+        shadowView.alpha = 0.8
+        //add the shadowView as a subview of the main view. This shadow must come first so that date picker can be added on top of it.
+        view.addSubview(shadowView)
+        
+        
+        //positions and sizes the datePickerView.
+            //view.center.x - (1/2 width of datepicker) centers the date picker
+            //CGRectGetMaxY positions the date picker slightly below the Change Date button
+        datePickerView = UIDatePicker(frame: CGRectMake(view.center.x - 180, CGRectGetMaxY(changeDateButton.frame) + 80, 360, 360))
+        //add background color to the date picker
+        datePickerView.backgroundColor = pink
+        //change date pickers font color
+        datePickerView.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
+        //sets picker mode to .date so user can only select whole days using wheels for month|day|year
+        datePickerView.datePickerMode = .Date
+        //add circular effect to datePicker by setting cornerRadius to 1/2 the width of date picker view
+        datePickerView.clipsToBounds = true
+        datePickerView.layer.cornerRadius = 180
+        //the date format found in the data.ny.gov Take5 database
+        let dataNYdateFormat = NSDateFormatter()
+        dataNYdateFormat.dateFormat = "mm/dd/yyyy"
+        //Set minimum and maximum date of datePicker. Another scenario would be too limit dates 1 year +/- today
+        datePickerView.minimumDate = dataNYdateFormat.dateFromString("01/01/2001")
+        datePickerView.maximumDate = dataNYdateFormat.dateFromString("12/31/2019")
+        //add date picker to the view, on top of the shadow view
+        view.addSubview(datePickerView)
+        
+        
+        datePickedButton = UIButton(type: .Custom)
+        datePickedButton.setTitle("Done", forState: .Normal)
+        datePickedButton.frame = CGRectMake(datePickerView.center.x - 30, CGRectGetMaxY(datePickerView.frame) + 20, 60, 30)
+        datePickedButton.addTarget(self, action:Selector("datePicked"), forControlEvents: .TouchUpInside)
+        view.addSubview(datePickedButton)
+        
+    }
+    
+    func datePicked() {
+        print("Date picked: \(datePickerView.date)")
+        
+        datePickedButton.removeFromSuperview()
+        shadowView.removeFromSuperview()
+        datePickerView.removeFromSuperview()
+    }
+    
+//END CITE - Thanks again JG!
+    
     //constants for the UICollectionViewCell ReuseIdentifier, must match the value entered via IB
     let keyReuseID = "numKeyCell"
     let pickReuseID = "pickCell"
@@ -67,6 +138,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     //colors
     let teal = UIColor(red: 0.0431, green: 0.5569, blue: 0.5333, alpha: 1.0)
     let bluegrey = UIColor(red: 0.6667, green: 0.749, blue: 0.7451, alpha: 1.0)
+    let pink = UIColor(red: 227/255, green: 81/255, blue: 152/255, alpha: 1.0)
+    let britepink = UIColor(red: 252/255, green: 81/255, blue: 197/255, alpha: 1.0)
     
     //declare 2 empty arrays for now. later, both arrays length will equal 'maxKeys' (39)
     //will hold all whole numbers between 1 and maxKeys (39) used to create the number picker grid
@@ -267,7 +340,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             }
             //ERROR ALERT IF picking more than 5 numbers
             else if keysPressed>=maxPick{
-                let take6error = UIAlertController(title: "One too many!", message: "Pick must have \(maxPick) numbers", preferredStyle: UIAlertControllerStyle.Alert)
+                let take6error = UIAlertController(title: "One too many!", message: "Pick exactly \(maxPick) numbers", preferredStyle: UIAlertControllerStyle.Alert)
                 take6error.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
                 presentViewController(take6error, animated: false, completion: nil)
             }
@@ -309,6 +382,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
 
     }
+
     
 }//close class
 

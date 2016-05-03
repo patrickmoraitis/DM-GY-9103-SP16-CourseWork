@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CD603E611CD468F400D830C4 /* DatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD603E601CD468F400D830C4 /* DatePicker.xib */; };
-		CD603E631CD46B2200D830C4 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD603E621CD46B2200D830C4 /* DatePickerViewController.swift */; };
+		CD603E661CD81F4E00D830C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD603E641CD81F4E00D830C4 /* Main.storyboard */; };
 		CD8946911CCF723F00133E6B /* WagerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8946901CCF723F00133E6B /* WagerStore.swift */; };
 		CDB7194D1CC71DE900BF112F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB7194C1CC71DE900BF112F /* AppDelegate.swift */; };
 		CDB7194F1CC71DE900BF112F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB7194E1CC71DE900BF112F /* ViewController.swift */; };
-		CDB719521CC71DE900BF112F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDB719501CC71DE900BF112F /* Main.storyboard */; };
 		CDB719541CC71DE900BF112F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDB719531CC71DE900BF112F /* Assets.xcassets */; };
 		CDB719571CC71DE900BF112F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDB719551CC71DE900BF112F /* LaunchScreen.storyboard */; };
 		CDB7195F1CCA021600BF112F /* NumKeyCViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB7195E1CCA021600BF112F /* NumKeyCViewCell.swift */; };
@@ -22,13 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CD603E601CD468F400D830C4 /* DatePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePicker.xib; sourceTree = "<group>"; };
-		CD603E621CD46B2200D830C4 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		CD603E651CD81F4E00D830C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD8946901CCF723F00133E6B /* WagerStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WagerStore.swift; sourceTree = "<group>"; };
 		CDB719491CC71DE900BF112F /* Take 5 Numbers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Take 5 Numbers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDB7194C1CC71DE900BF112F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDB7194E1CC71DE900BF112F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CDB719511CC71DE900BF112F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDB719531CC71DE900BF112F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDB719561CC71DE900BF112F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDB719581CC71DE900BF112F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,9 +64,7 @@
 		CDB7194B1CC71DE900BF112F /* Take 5 Numbers */ = {
 			isa = PBXGroup;
 			children = (
-				CDB719501CC71DE900BF112F /* Main.storyboard */,
-				CD603E601CD468F400D830C4 /* DatePicker.xib */,
-				CD603E621CD46B2200D830C4 /* DatePickerViewController.swift */,
+				CD603E641CD81F4E00D830C4 /* Main.storyboard */,
 				CDB7194C1CC71DE900BF112F /* AppDelegate.swift */,
 				CDB7194E1CC71DE900BF112F /* ViewController.swift */,
 				CDDAC6521CCD548200A0C6A9 /* WagerTableViewController.swift */,
@@ -143,10 +137,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD603E661CD81F4E00D830C4 /* Main.storyboard in Resources */,
 				CDB719571CC71DE900BF112F /* LaunchScreen.storyboard in Resources */,
 				CDB719541CC71DE900BF112F /* Assets.xcassets in Resources */,
-				CDB719521CC71DE900BF112F /* Main.storyboard in Resources */,
-				CD603E611CD468F400D830C4 /* DatePicker.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +154,6 @@
 				CDDAC6511CCD4DF800A0C6A9 /* WagerTableViewCell.swift in Sources */,
 				CDB7194F1CC71DE900BF112F /* ViewController.swift in Sources */,
 				CD8946911CCF723F00133E6B /* WagerStore.swift in Sources */,
-				CD603E631CD46B2200D830C4 /* DatePickerViewController.swift in Sources */,
 				CDB7194D1CC71DE900BF112F /* AppDelegate.swift in Sources */,
 				CDDAC6531CCD548200A0C6A9 /* WagerTableViewController.swift in Sources */,
 				CDB7195F1CCA021600BF112F /* NumKeyCViewCell.swift in Sources */,
@@ -171,10 +163,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CDB719501CC71DE900BF112F /* Main.storyboard */ = {
+		CD603E641CD81F4E00D830C4 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CDB719511CC71DE900BF112F /* Base */,
+				CD603E651CD81F4E00D830C4 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
