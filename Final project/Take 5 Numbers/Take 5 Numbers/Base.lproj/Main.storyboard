@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Wager Table View Controller-->
@@ -111,6 +112,90 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wA-Bk-3OB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-29.5" y="164.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Dqm-1A-wWF">
+            <objects>
+                <navigationController id="TRH-PW-lnk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="more" id="bGp-ey-c3e"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eIc-LE-P7I">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vLh-y3-s36" kind="relationship" relationship="rootViewController" id="FyH-5G-vTn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fwv-VU-lag" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-698.5" y="-1410.5"/>
+        </scene>
+        <!--nylottery.ny.gov-->
+        <scene sceneID="uiz-hl-4ah">
+            <objects>
+                <viewController id="vLh-y3-s36" customClass="WebViewController" customModule="Take_5_Numbers" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Woo-Ti-bi7"/>
+                        <viewControllerLayoutGuide type="bottom" id="kPG-4l-19N"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nwg-5z-TUV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M9b-FQ-1qe">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vLh-y3-s36" id="Qga-Tx-nKb"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="M9b-FQ-1qe" secondAttribute="trailing" id="IdT-Op-ugH"/>
+                            <constraint firstItem="kPG-4l-19N" firstAttribute="top" secondItem="M9b-FQ-1qe" secondAttribute="bottom" id="ZP9-cM-Tyl"/>
+                            <constraint firstItem="M9b-FQ-1qe" firstAttribute="top" secondItem="Woo-Ti-bi7" secondAttribute="bottom" id="fuJ-MS-JtD"/>
+                            <constraint firstItem="M9b-FQ-1qe" firstAttribute="leading" secondItem="Nwg-5z-TUV" secondAttribute="leading" id="yrE-s4-Ee0"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="nylottery.ny.gov" id="H3L-PG-OE7">
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="rewind" id="6ca-EH-0Zy">
+                                <color key="tintColor" red="0.89019607840000003" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="backAction:" destination="vLh-y3-s36" id="gc8-Ei-GIv"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="fastForward" id="LNB-Hz-wnm">
+                                <color key="tintColor" red="0.89019607840000003" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="forwardAction:" destination="vLh-y3-s36" id="Rym-ak-doj"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="stop" id="sU5-so-2y6">
+                                <color key="tintColor" red="0.89019607840000003" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="stopAction:" destination="vLh-y3-s36" id="dni-xC-gWO"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="4WR-5m-rRe">
+                                <color key="tintColor" red="0.89019607840000003" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="refreshAction:" destination="vLh-y3-s36" id="YCK-wo-cpy"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="navigationTitle" destination="H3L-PG-OE7" id="gYR-D5-40j"/>
+                        <outlet property="webView" destination="M9b-FQ-1qe" id="0Bi-b2-7Lt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ob7-0L-bjk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-29.5" y="-1410.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Np-ZU-419">
@@ -373,15 +458,12 @@
                     <connections>
                         <segue destination="5uH-kk-fIu" kind="relationship" relationship="viewControllers" id="lkK-IK-Xib"/>
                         <segue destination="kyr-PA-mlr" kind="relationship" relationship="viewControllers" id="hOj-BI-NoN"/>
+                        <segue destination="TRH-PW-lnk" kind="relationship" relationship="viewControllers" id="J9i-n5-JIc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVx-lr-bfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationBar contentMode="scaleToFill" id="kLa-Nr-Rxf">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                </navigationBar>
             </objects>
-            <point key="canvasLocation" x="-1282.5" y="-215.5"/>
+            <point key="canvasLocation" x="-1306.5" y="-634.5"/>
         </scene>
     </scenes>
     <resources>

@@ -14,6 +14,7 @@
 		CDB719541CC71DE900BF112F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDB719531CC71DE900BF112F /* Assets.xcassets */; };
 		CDB719571CC71DE900BF112F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDB719551CC71DE900BF112F /* LaunchScreen.storyboard */; };
 		CDB7195F1CCA021600BF112F /* NumKeyCViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB7195E1CCA021600BF112F /* NumKeyCViewCell.swift */; };
+		CDBC36331CD8FE850056012F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBC36321CD8FE850056012F /* WebViewController.swift */; };
 		CDDAC6511CCD4DF800A0C6A9 /* WagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDAC6501CCD4DF800A0C6A9 /* WagerTableViewCell.swift */; };
 		CDDAC6531CCD548200A0C6A9 /* WagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDAC6521CCD548200A0C6A9 /* WagerTableViewController.swift */; };
 		CDDAC6551CCD5DFE00A0C6A9 /* Wager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDAC6541CCD5DFE00A0C6A9 /* Wager.swift */; };
@@ -29,6 +30,7 @@
 		CDB719561CC71DE900BF112F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDB719581CC71DE900BF112F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDB7195E1CCA021600BF112F /* NumKeyCViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumKeyCViewCell.swift; sourceTree = "<group>"; };
+		CDBC36321CD8FE850056012F /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		CDDAC6501CCD4DF800A0C6A9 /* WagerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WagerTableViewCell.swift; sourceTree = "<group>"; };
 		CDDAC6521CCD548200A0C6A9 /* WagerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WagerTableViewController.swift; sourceTree = "<group>"; };
 		CDDAC6541CCD5DFE00A0C6A9 /* Wager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wager.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				CD603E641CD81F4E00D830C4 /* Main.storyboard */,
 				CDB7194C1CC71DE900BF112F /* AppDelegate.swift */,
 				CDB7194E1CC71DE900BF112F /* ViewController.swift */,
+				CDBC36321CD8FE850056012F /* WebViewController.swift */,
 				CDDAC6521CCD548200A0C6A9 /* WagerTableViewController.swift */,
 				CDDAC6541CCD5DFE00A0C6A9 /* Wager.swift */,
 				CD8946901CCF723F00133E6B /* WagerStore.swift */,
@@ -157,6 +160,7 @@
 				CDB7194D1CC71DE900BF112F /* AppDelegate.swift in Sources */,
 				CDDAC6531CCD548200A0C6A9 /* WagerTableViewController.swift in Sources */,
 				CDB7195F1CCA021600BF112F /* NumKeyCViewCell.swift in Sources */,
+				CDBC36331CD8FE850056012F /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
