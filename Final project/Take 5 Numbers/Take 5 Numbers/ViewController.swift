@@ -20,7 +20,23 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     @IBAction func wagerPick(sender: UIBarButtonItem) {
         //print(numbersPicked)
-        //controlled by segue
+        let wager = Wager(pickK: numbersPicked, dateK: dateSelected, nameK: "more cats")!
+        WagerStore.sharedInstance.addWager(wager)
+        
+        var alertMessage: String
+        var alertTitle: String
+        
+        if openBet {
+            alertMessage = "You saved a bet on \(numbersPicked.map{ "\($0)"}.joinWithSeparator(", ")) \n for \(longStringFromDateFormat(dateSelected))"
+            alertTitle = "Good luck!"
+        }else{
+            alertMessage = "Your bet did not win\n\nBetter luck next time!"
+            alertTitle = "Results for \(stringFromDateFormat(dateSelected))"
+        }
+        
+        let successBet = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        successBet.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        presentViewController(successBet, animated: false, completion: nil)
     }
     
     @IBOutlet weak var resetButton: UIBarButtonItem!
@@ -122,11 +138,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         dateSelected = datePickerView.date
         
+        //convert data from basic string back to NSDate to remove the element of time from date
         let dateStr = stringFromDateFormat(dateSelected)
         let todayStr = stringFromDateFormat(todaysDate)
+        let dateDate = dateFromStringFormat(dateStr)
+        let todayDate = dateFromStringFormat(todayStr)
         
+        //compares the date selected in relation to todays date
+        let tenseResult: NSComparisonResult = todayDate.compare(dateDate)
+
+        if(tenseResult == NSComparisonResult.OrderedDescending){
+            dateLabel.text = "Past date " + longStringFromDateFormat(dateSelected)
+            openBet = false
         }
+        else if(tenseResult == NSComparisonResult.OrderedAscending){
+            dateLabel.text = "Future date " + longStringFromDateFormat(dateSelected)
+            openBet = true
         }
+        else if(tenseResult == NSComparisonResult.OrderedSame){
+            dateLabel.text = "Today is " + longStringFromDateFormat(dateSelected)
+            openBet = true
         }
         
         datePickedButton.removeFromSuperview()
@@ -171,12 +202,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     //Default date is today
     var dateSelected = NSDate()
     let todaysDate = NSDate()
+    var openBet = true
     
     override func viewDidLoad() {
         
         //default date label is todays date
         dataNYdateFormat.dateStyle = NSDateFormatterStyle.LongStyle
         //dataNYdateFormat.dateFormat = "MM/dd/yyyy"
+        
+        dateLabel.text = "Today is " + dataNYdateFormat.stringFromDate(dateSelected)
+        
         
         //define arrays with for loops
         for var i=1; i<=maxKeys; ++i {
@@ -194,6 +229,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         //keyToggle: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         //keyToggle: [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     }
+    
+    //override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        //if let destinationViewController = segue.destinationViewController as? WagerTableViewController {}
+        
+        //let dateBet = dateSelected
+        //print(dateSelected);
+
+    //}
     
     //required init?(coder aDecoder: NSCoder) {super.init(coder: aDecoder)}
     
@@ -347,8 +391,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             }
             //ERROR ALERT IF picking more than 5 numbers
             else if keysPressed>=maxPick{
-                let take6error = UIAlertController(title: "One too many!", message: "Pick exactly \(maxPick) numbers", preferredStyle: UIAlertControllerStyle.Alert)
-                take6error.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                let take6error = UIAlertController(title: "One too many!", message: "Pick exactly \(maxPick) numbers to bet", preferredStyle: UIAlertControllerStyle.Alert)
+                take6error.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
                 presentViewController(take6error, animated: false, completion: nil)
             }
             else{
@@ -390,13 +434,25 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     }
     
+    func stringFromDateFormat(nsdate: NSDate) -> String {
         //the date format found in the data.ny.gov Take5 database
+        dataNYdateFormat.dateFormat = "MM/dd/yyyy"
         
         return dataNYdateFormat.stringFromDate(nsdate)
     }
     
+    func longStringFromDateFormat(nsdate: NSDate) -> String {
         //the date format found in the data.ny.gov Take5 database
+        dataNYdateFormat.dateStyle = NSDateFormatterStyle.LongStyle
         
+        return dataNYdateFormat.stringFromDate(nsdate)
+    }
+    
+    func dateFromStringFormat(string: String) -> NSDate {
+        //the date format found in the data.ny.gov Take5 database
+        dataNYdateFormat.dateFormat = "MM/dd/yyyy"
+        
+        return dataNYdateFormat.dateFromString(string)!
     }
 
     

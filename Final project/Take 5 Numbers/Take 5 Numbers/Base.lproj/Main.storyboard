@@ -254,11 +254,10 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="dhm-en-lNH"/>
-                                    <barButtonItem tag="1" enabled="NO" title="Save Wager" style="done" id="wsS-En-f6r">
+                                    <barButtonItem tag="1" enabled="NO" title="Save Bet" style="done" id="wsS-En-f6r">
                                         <color key="tintColor" red="0.89019607840000003" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="wagerPick:" destination="KJt-MK-Cf1" id="B45-PO-a3Q"/>
-                                            <segue destination="rfR-Aj-Dom" kind="show" id="0UR-aC-1E5"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -388,7 +387,4 @@
     <resources>
         <image name="pic2" width="250" height="250"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="0UR-aC-1E5"/>
-    </inferredMetricsTieBreakers>
 </document>
