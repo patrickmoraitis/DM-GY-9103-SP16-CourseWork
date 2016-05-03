@@ -58,6 +58,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     
+    
 //CITE//Major thanks to my coworker and friend JG for helping me with this pop up date picker!
     
     //programmatically creates 1 views, one date picker, and a button
@@ -84,7 +85,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         //add the shadowView as a subview of the main view. This shadow must come first so that date picker can be added on top of it.
         view.addSubview(shadowView)
         
-        
         //positions and sizes the datePickerView.
             //view.center.x - (1/2 width of datepicker) centers the date picker
             //CGRectGetMaxY positions the date picker slightly below the Change Date button
@@ -99,8 +99,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         datePickerView.clipsToBounds = true
         datePickerView.layer.cornerRadius = 180
         //the date format found in the data.ny.gov Take5 database
-        let dataNYdateFormat = NSDateFormatter()
-        dataNYdateFormat.dateFormat = "mm/dd/yyyy"
+        //dataNYdateFormat.dateFormat = "MM/dd/yyyy"
         //Set minimum and maximum date of datePicker. Another scenario would be too limit dates 1 year +/- today
         datePickerView.minimumDate = dataNYdateFormat.dateFromString("01/01/2001")
         datePickerView.maximumDate = dataNYdateFormat.dateFromString("12/31/2019")
@@ -117,7 +116,21 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func datePicked() {
-        print("Date picked: \(datePickerView.date)")
+        
+        dateSelected = datePickerView.date
+        
+        let dateStr = stringFromDateFormat(dateSelected)
+        let todayStr = stringFromDateFormat(todaysDate)
+        
+        if(dateStr < todayStr){
+            dateLabel.text = "Past date: " + longStringFromDateFormat(dateSelected)
+        }
+        else if(dateStr > todayStr){
+            dateLabel.text = "Future date: " + longStringFromDateFormat(dateSelected)
+        }
+        else if(dateStr == todayStr){
+            dateLabel.text = "Today's date: " + longStringFromDateFormat(dateSelected)
+        }
         
         datePickedButton.removeFromSuperview()
         shadowView.removeFromSuperview()
@@ -125,6 +138,33 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
 //END CITE - Thanks again JG!
+    
+    func stringFromDateFormat(nsdate: NSDate) -> String {
+        //the date format found in the data.ny.gov Take5 database
+        dataNYdateFormat.dateFormat = "MM/dd/yyyy"
+        
+        return dataNYdateFormat.stringFromDate(nsdate)
+    }
+    
+    func longStringFromDateFormat(nsdate: NSDate) -> String {
+        //the date format found in the data.ny.gov Take5 database
+        dataNYdateFormat.dateStyle = NSDateFormatterStyle.LongStyle
+        
+        return dataNYdateFormat.stringFromDate(nsdate)
+    }
+    
+    func dateFromStringFormat(string: String) -> NSDate {
+        //the date format found in the data.ny.gov Take5 database
+        dataNYdateFormat.dateFormat = "MM/dd/yyyy"
+        
+        return dataNYdateFormat.dateFromString(string)!
+    }
+    
+
+    
+    //the date format found in the data.ny.gov Take5 database
+    let dataNYdateFormat = NSDateFormatter()
+    let mmddyyyy = "MM/dd/yyyy"
     
     //constants for the UICollectionViewCell ReuseIdentifier, must match the value entered via IB
     let keyReuseID = "numKeyCell"
@@ -154,8 +194,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     //holds number of how many numbers are selected, defaults with 0 and must not exceed maxPick (5)
     var keysPressed = 0
 
-    //Date
-    //var dateSelected = NSDate()
+    //Default date is today
+    var dateSelected = NSDate()
+    let todaysDate = NSDate()
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -164,13 +205,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             //let dateBet = dateSelected
             //print(dateSelected);
             
-            let wager = Wager(pickK: numbersPicked, dateK: NSDate(), nameK: "cats")!
+            let wager = Wager(pickK: numbersPicked, dateK: dateSelected, nameK: "more cats")!
             WagerStore.sharedInstance.addWager(wager)
     }
     
-    //define arrays with loops
-    required init?(coder aDecoder: NSCoder) {
+    override func viewDidLoad() {
         
+        //default date label is todays date
+        dataNYdateFormat.dateStyle = NSDateFormatterStyle.LongStyle
+        //dataNYdateFormat.dateFormat = "MM/dd/yyyy"
+
+        dateLabel.text = "Today is: " + dataNYdateFormat.stringFromDate(dateSelected)
+
+        
+        //define arrays with for loops
         for var i=1; i<=maxKeys; ++i {
             keyArray.append(i)//should only be defined once
             keyToggle.append(false)
@@ -180,15 +228,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             numbersPicked.append(0)
         }
         
+        //print(keyArray);print(keyToggle)
+        
         //keyArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
         //keyToggle: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         //keyToggle: [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
-        
-        //print(keyArray);print(keyToggle)
-        
-        super.init(coder: aDecoder)
-                
     }
+    
+    //required init?(coder aDecoder: NSCoder) {super.init(coder: aDecoder)}
     
 //BEGIN UICollectionViewDataSource protocol - https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionViewDataSource_protocol/
     
