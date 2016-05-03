@@ -461,9 +461,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return dataNYdateFormat.dateFromString(string)!
     }
 
+//Another huge thanks to my colleague JG for helping me fix my mess
+    
     func fetchWinningNumbers() {
         
-        print("fetch")
+    if !openBet {
         
         //this format is required to query the API by draw_date
         dataNYdateFormat.dateFormat = "yyyy-MM-dd"
@@ -490,8 +492,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 return
             }
         }
-        
     }
+    else{
+        
+        winningNumber.text = "This number is yet to be drawn, visit your local lotto retailer and play today!"
+        
+        }
+    }//Thanks JG!
     
 }//close class
 
