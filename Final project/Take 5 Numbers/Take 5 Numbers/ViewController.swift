@@ -465,7 +465,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func fetchWinningNumbers() {
         
-    if !openBet {
+        if !openBet {
         
         //this format is required to query the API by draw_date
         dataNYdateFormat.dateFormat = "yyyy-MM-dd"
