@@ -56,6 +56,8 @@ class WagerStore {
     }
     
     func removeWagerAtIndex(i: Int) {
+        
+        //http://stackoverflow.com/questions/24051633/how-to-remove-an-element-from-an-array-in-swift
         allWagers.removeAtIndex((allWagers.count - 1) - i)
         
         save()

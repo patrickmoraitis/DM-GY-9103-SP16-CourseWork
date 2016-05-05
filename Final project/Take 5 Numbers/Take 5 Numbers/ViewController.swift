@@ -21,6 +21,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var wagerButton: UIBarButtonItem!
     
     @IBAction func wagerPick(sender: UIBarButtonItem) {
+        
+        //adds wager to the data store and displays a confirmation message
+        
         //print(numbersPicked)
         let wager = Wager(pickK: numbersPicked, dateK: dateSelected, nameK: "more cats")!
         WagerStore.sharedInstance.addWager(wager)
@@ -28,10 +31,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         var alertMessage: String
         var alertTitle: String
         
+        //confirm that a bet was placed if date selected is in the future
         if openBet {
             alertMessage = "You saved a bet on \(numbersPicked.map{ "\($0)"}.joinWithSeparator(", ")) \n for \(longStringFromDateFormat(dateSelected))"
             alertTitle = "Good luck!"
-        }else{
+        }
+        //if date selected is in the past, show result of the bet
+        //Assumes the bet did not win, needs to be updated to reference the API
+        else{
             alertMessage = "Your bet did not win\n\nBetter luck next time!"
             alertTitle = "Results for \(stringFromDateFormat(dateSelected))"
         }
@@ -61,6 +68,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         for var i=1; i<=maxKeys; ++i {keyToggle.append(false)}
         
         while keysPressed < 5 {
+            
+            //http://stackoverflow.com/questions/24007129/how-does-one-generate-a-random-number-in-apples-swift-language
             
             let r = Int(arc4random_uniform(UInt32(maxKeys)))
             
@@ -114,11 +123,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         //sets picker mode to .date so user can only select whole days using wheels for month|day|year
         datePickerView.datePickerMode = .Date
         //add circular effect to datePicker by setting cornerRadius to 1/2 the width of date picker view
+        //https://www.hackingwithswift.com/example-code/calayer/how-to-round-the-corners-of-a-uiview
         datePickerView.clipsToBounds = true
         datePickerView.layer.cornerRadius = 180
         //the date format found in the data.ny.gov Take5 database
-        //dataNYdateFormat.dateFormat = "MM/dd/yyyy"
+        dataNYdateFormat.dateFormat = "MM/dd/yyyy"
         //Set minimum and maximum date of datePicker. Another scenario would be too limit dates 1 year +/- today
+        //http://stackoverflow.com/questions/4436645/set-minimum-date-to-uidatepicker
         datePickerView.minimumDate = dataNYdateFormat.dateFromString("01/01/2001")
         datePickerView.maximumDate = dataNYdateFormat.dateFromString("12/31/2019")
         //add date picker to the view, on top of the shadow view
@@ -138,6 +149,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func datePicked() {
         
+        //update dateSelected variable with the date selected by the user
         dateSelected = datePickerView.date
         
         //convert data from basic string back to NSDate to remove the element of time from date
@@ -147,6 +159,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let todayDate = dateFromStringFormat(todayStr)
         
         //compares the date selected in relation to todays date
+        //implementation guided by examples in http://stackoverflow.com/questions/26198526/nsdate-comparison-using-swift
         let tenseResult: NSComparisonResult = todayDate.compare(dateDate)
 
         if(tenseResult == NSComparisonResult.OrderedDescending){
@@ -438,7 +451,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     }
     
-    // 3 functions used for converting NSDate to String and vice versa in the right format
+    // 3 helper functions used for converting NSDate to String and vice versa in the right format
+    //http://stackoverflow.com/questions/24777496/how-can-i-convert-string-date-to-nsdate
     
     func stringFromDateFormat(nsdate: NSDate) -> String {
         //the date format found in the data.ny.gov Take5 database
@@ -461,44 +475,48 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return dataNYdateFormat.dateFromString(string)!
     }
 
-//Another huge thanks to my colleague JG for helping me fix my mess
-    
+
+    //this function is called everytime a new date is selected from date picker
     func fetchWinningNumbers() {
         
+        // only fetch data for past dates, "closed bets"
         if !openBet {
         
-        //this format is required to query the API by draw_date
-        dataNYdateFormat.dateFormat = "yyyy-MM-dd"
+            //this format is required to query the API by draw_date
+            dataNYdateFormat.dateFormat = "yyyy-MM-dd"
         
-        let qByDrawDateURL = "https://data.ny.gov/resource/hh4x-xmbw.json?draw_date="
+            // data ny API call with draw_date parameter
+            let qByDrawDateURL = "https://data.ny.gov/resource/hh4x-xmbw.json?draw_date="
         
-        if let url = NSURL(string: qByDrawDateURL + "\(dataNYdateFormat.stringFromDate(dateSelected))"),
+            
+////Another huge thanks to my colleague JG for helping me call the API and how to use do/catch
+            
+            //append the date selected to the base URL string
+            //if string is created, load the date and use do/catch for error handling
+            if let url = NSURL(string: qByDrawDateURL + "\(dataNYdateFormat.stringFromDate(dateSelected))"),
             let data = NSData(contentsOfURL: url) {
         
-            do
-            {
-                let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                do{
+                    let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
                 
-                //print(jsonData)
-                //print((jsonData.firstObject as! [String:String])["winning_numbers"]!)
+                    //print(jsonData)
+                    //print((jsonData.firstObject as! [String:String])["winning_numbers"]!)
                 
-                let numDrawn = (jsonData.firstObject as! [String:String])["winning_numbers"]!
+                    let numDrawn = (jsonData.firstObject as! [String:String])["winning_numbers"]!
                 
-                winningNumber.text = "The winning number for this date is \n\n \(numDrawn)"
-            }
+                    winningNumber.text = "The winning number for this date is \n\n \(numDrawn)"
+                }
                 
-            catch (let error as NSError) {
-                print("Error: \(error)!")
-                return
-            }
+                catch (let error as NSError) {
+                    print("Error: \(error)!")
+                    return
+                }
+            }//Thanks again JG!
         }
-    }
-    else{
-        
-        winningNumber.text = "This number is yet to be drawn, visit your local lotto retailer and play today!"
-        
+        else{
+            winningNumber.text = "This number is yet to be drawn, visit your local lotto retailer and play today!"
         }
-    }//Thanks JG!
+    }//close fetchWinningNumbers
     
 }//close class
 

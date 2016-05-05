@@ -1,0 +1,87 @@
+----GENERAL RESOURCES-----
+
+Swift language guide and reference - https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-ID0
+
+Class textbook - http://amzn.to/1SdWSgK - Keur, Christian, Aaron Hillegass, and Joe Conway. iOS Programming: The Big Nerd Ranch Guide. 5th ed. Atlanta, GA: Big Nerd Ranch, 2015.
+
+Professor Ricca, classmates, and coworkers
+
+
+
+-----APP INSPIRATION, RULES, & DATA API------
+
+Project uses NY Take 5 lottery game as an example - http://nylottery.ny.gov/wps/portal/Home/Lottery/Home/Daily+Games/TAKE+5
+
+Scan of paper Take 5 wager slip used to sample colors and to make app icon - http://nylottery.ny.gov/wps/wcm/connect/6810cfb4-51db-4cda-b74e-c01e06b5a8d7/take5_playcard.jpg?MOD=AJPERES&CACHEID=6810cfb4-51db-4cda-b74e-c01e06b5a8d7
+
+NYC Open Data portal using Socrata (SODA) - https://nycopendata.socrata.com/
+
+Take 5 Winning Numbers data and API - https://data.ny.gov/Government-Finance/Lottery-Take-5-Winning-Numbers/dg63-4siq
+
+	json file complete data - https://data.ny.gov/resource/hh4x-xmbw.json
+
+	with date parameter https://data.ny.gov/resource/hh4x-xmbw.json?draw_date=2016-01-03
+
+
+
+-----WEBVIEWS-----
+
+The WebViewController class and overall implementation of web view in this project is based on the following tutorial - http://www.alphansotech.com/blogs/how-to-use-web-view-in-ios-using-swift/
+
+Allowing access to http requests - http://stackoverflow.com/questions/31254725/transport-security-has-blocked-a-cleartext-http
+
+Adjusting margins/padding in webview - https://forums.xamarin.com/discussion/9791/set-a-top-margin-for-a-webview-in-ios
+
+
+
+------DATE PICKER & DATES---------
+
+Popup date picker implementation in final project was guided by my colleague JG
+
+Popup date picker tutorial also helped - http://coding.tabasoft.it/ios/a-simple-ios8-popdatepicker/
+
+Adding rounded corners to UIView, this was used to give my date picker a circular window - https://www.hackingwithswift.com/example-code/calayer/how-to-round-the-corners-of-a-uiview
+
+Setting min/max date range on date picker - http://stackoverflow.com/questions/4436645/set-minimum-date-to-uidatepicker
+
+UIDatePicker Apple documentation - https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDatePicker_Class/index.html#//apple_ref/swift/cl/c:objc%28cs%29UIDatePicker
+
+NSDateFormatter Apple documentation - https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSDateFormatter_Class/index.html#//apple_ref/swift/cl/c:objc%28cs%29NSDateFormatter
+
+Converting between NSDate and String - http://stackoverflow.com/questions/24777496/how-can-i-convert-string-date-to-nsdate
+
+Comparing between dates past, present, and future - http://stackoverflow.com/questions/26198526/nsdate-comparison-using-swift
+
+
+
+-----DATA TYPES------
+
+Type casting - https://developer.apple.com/swift/blog/?id=23
+
+https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TypeCasting.html#//apple_ref/doc/uid/TP40014097-CH22-ID338
+
+removing from Array - http://stackoverflow.com/questions/24051633/how-to-remove-an-element-from-an-array-in-swift
+
+
+
+-----RANDOM NUMBERS------
+
+http://stackoverflow.com/questions/24007129/how-does-one-generate-a-random-number-in-apples-swift-language
+
+
+
+------TABLE & COLLECTION VIEWS------
+
+Tutorial - https://www.codementor.io/swift/tutorial/two-basic-ways-to-populate-your-uitableview
+
+Data source & delegate tutorial - http://code.tutsplus.com/tutorials/ios-from-scratch-with-swift-table-view-basics--cms-25160
+
+Apple docs - https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionViewDataSource_protocol/
+
+Edit mode - http://stackoverflow.com/questions/6001852/uitableview-edit-mode
+
+Inserting cells and using reload data - http://stackoverflow.com/questions/31870206/how-to-insert-new-cell-into-uitableview-in-swift
+
+Reload data - https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionView_class/index.html#//apple_ref/occ/instm/UICollectionView/reloadData
+
+

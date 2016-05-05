@@ -72,6 +72,7 @@ class WagerTableViewController: UITableViewController{
     }
     
     // Override to support editing the table view.
+    // http://stackoverflow.com/questions/6001852/uitableview-edit-mode
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             

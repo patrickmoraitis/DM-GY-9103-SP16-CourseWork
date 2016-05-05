@@ -8,6 +8,8 @@
 
 import UIKit
 
+//This class and overall implementation of web view in this project is based on the following tutorial - http://www.alphansotech.com/blogs/how-to-use-web-view-in-ios-using-swift/
+
 class WebViewController: UIViewController {
 
     @IBOutlet weak var navigationTitle: UINavigationItem!
@@ -23,10 +25,9 @@ class WebViewController: UIViewController {
         
         webView.scalesPageToFit = true
         
-       // webView.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)
-        
         webView.loadRequest(requestObj)
         
+        //adjust inset - https://forums.xamarin.com/discussion/9791/set-a-top-margin-for-a-webview-in-ios
         webView.scrollView.contentInset = UIEdgeInsets(top: -60,left: 0,bottom: -60,right: 0)
     }
     
